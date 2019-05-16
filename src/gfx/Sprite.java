@@ -17,7 +17,7 @@ public class Sprite {
     private BufferedImage texture;
     public Sprite(Point start,int size)
     {
-        texture=SpriteSheet.crop(start,size);
+        texture=spriteSheet.crop(start,size);
     }
 
     public BufferedImage getTexture() {

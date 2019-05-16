@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class SpriteSheet {
-    private static BufferedImage image;
+    private BufferedImage image;
 
     public SpriteSheet(String path)
     {
@@ -16,7 +16,7 @@ public class SpriteSheet {
             e.printStackTrace();
         }
     }
-    public static BufferedImage crop(Point start, int size)
+    public BufferedImage crop(Point start, int size)
     {
         return image.getSubimage(start.getX(),start.getY(),size,size);
     }
