@@ -1,5 +1,6 @@
 package gfx;
 
+
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -102,9 +103,15 @@ public class GamePanel extends JPanel implements Runnable
     public void draw()
     {
         Graphics graphics=(Graphics) this.getGraphics();
+
+        //draw here
+
+
         graphics.drawImage(image,0,0,width,height,null);
+        graphics.drawImage(Sprite.defaultTexture.getTexture(),0,0,Sprite.getDefaultSize(),Sprite.getDefaultSize(),null);
 
 
+        //end drawing
         graphics.dispose();
     }
 
