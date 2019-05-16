@@ -15,9 +15,9 @@ public class Player extends Creature{
 
     @Override
     public void move() {
-        int x=getX();
+        /*int x=getX();
         int y=getY();
-        setCoordinate(new Point(x,y));
+        setCoordinate(new Point(x,y));*/
     }
 
     @Override
