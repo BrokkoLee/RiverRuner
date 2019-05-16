@@ -1,7 +1,9 @@
 package gfx;
 
 import javax.imageio.ImageIO;
-import logic.Point;
+
+import logic.Coordinate;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -16,7 +18,7 @@ public class SpriteSheet {
             e.printStackTrace();
         }
     }
-    public BufferedImage crop(Point start, int size)
+    public BufferedImage crop(Coordinate start, int size)
     {
         return image.getSubimage(start.getX(),start.getY(),size,size);
     }

@@ -1,6 +1,6 @@
 package gfx;
 
-import logic.Point;
+import logic.Coordinate;
 
 import java.awt.image.BufferedImage;
 
@@ -11,11 +11,11 @@ public class Sprite {
 
 
 
-    public static Sprite defaultSprite=new Sprite(new Point(0,0),DEFAULT_SIZE);
+    public static Sprite defaultSprite=new Sprite(new Coordinate(0,0),DEFAULT_SIZE);
 
 
     private BufferedImage texture;
-    private Sprite(Point start,int size){
+    private Sprite(Coordinate start, int size){
         texture=spriteSheet.crop(start,size);
     }
 

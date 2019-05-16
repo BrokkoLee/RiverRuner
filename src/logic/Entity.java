@@ -7,15 +7,15 @@ import java.awt.image.BufferedImage;
 
 public abstract class Entity {
     private BufferedImage texture=Sprite.defaultSprite.getTexture();
-    protected Point coordinate=new Point(0,0);
+    protected Coordinate coordinate=new Coordinate(0,0);
     public abstract void update();
-    public Entity(Sprite sprite, Point coordinate)
+    public Entity(Sprite sprite, Coordinate coordinate)
     {
         this.texture=sprite.getTexture();
         setCoordinate(coordinate);
     }
 
-    public void setCoordinate(Point coordinate) {
+    public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
     public void render(Graphics graphics)

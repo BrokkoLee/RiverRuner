@@ -3,7 +3,7 @@ package logic;
 import gfx.Sprite;
 
 public class Player extends Creature{
-    public Player(Point startCoordinate)
+    public Player(Coordinate startCoordinate)
     {
         super(Sprite.defaultSprite,startCoordinate);
     }
@@ -17,7 +17,7 @@ public class Player extends Creature{
     public void move() {
         /*int x=getX();
         int y=getY();
-        setCoordinate(new Point(x,y));*/
+        setCoordinate(new Coordinate(x,y));*/
     }
 
     @Override

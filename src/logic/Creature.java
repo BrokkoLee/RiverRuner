@@ -3,7 +3,7 @@ package logic;
 import gfx.Sprite;
 
 public abstract class Creature extends Entity{
-    public Creature(Sprite sprite, Point coordinate)
+    public Creature(Sprite sprite, Coordinate coordinate)
     {
         super(sprite,coordinate);
     }

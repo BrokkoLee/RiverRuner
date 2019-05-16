@@ -3,7 +3,7 @@ package gfx;
 
 import logic.Entity;
 import logic.Player;
-import logic.Point;
+import logic.Coordinate;
 
 import javax.swing.JPanel;
 import java.awt.Graphics;
@@ -23,7 +23,7 @@ public class GamePanel extends JPanel implements Runnable
 
     SpriteSheet sheet=new SpriteSheet("/textures/sprite.png");
 
-    Entity player=new Player(new Point(50,50));
+    Entity player=new Player(new Coordinate(50,50));
 
     public GamePanel(int width, int height)
     {
