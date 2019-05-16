@@ -11,7 +11,7 @@ public class Sprite {
 
 
 
-    public static Sprite defaultTexture=new Sprite(new Point(0,0),DEFAULT_SIZE);
+    public static Sprite defaultSprite=new Sprite(new Point(0,0),DEFAULT_SIZE);
 
 
     private BufferedImage texture;

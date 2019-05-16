@@ -1,6 +1,10 @@
 package gfx;
 
 
+import logic.Entity;
+import logic.Player;
+import logic.Point;
+
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -18,6 +22,8 @@ public class GamePanel extends JPanel implements Runnable
     private boolean running=false;
 
     SpriteSheet sheet=new SpriteSheet("/textures/sprite.png");
+
+    Entity player=new Player(new Point(50,50));
 
     public GamePanel(int width, int height)
     {
@@ -87,7 +93,7 @@ public class GamePanel extends JPanel implements Runnable
 
     public void update()
     {
-
+        player.update();
     }
 
     public void render()
@@ -108,7 +114,7 @@ public class GamePanel extends JPanel implements Runnable
 
 
         graphics.drawImage(image,0,0,width,height,null);
-        graphics.drawImage(Sprite.defaultTexture.getTexture(),0,0,Sprite.DEFAULT_SIZE,Sprite.DEFAULT_SIZE,null);
+        player.render(graphics);
 
 
         //end drawing

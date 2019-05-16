@@ -3,11 +3,20 @@ package logic;
 import gfx.Sprite;
 
 public abstract class Creature extends Entity{
-    public abstract boolean isHostile();
-
-    public Creature(Sprite sprite)
+    public Creature(Sprite sprite, Point coordinate)
     {
-        super(sprite);
+        super(sprite,coordinate);
+    }
+
+    public abstract boolean isHostile();
+    public abstract void move();
+
+    public int getX() {
+        return coordinate.getX();
+    }
+
+    public int getY() {
+        return coordinate.getY();
     }
 
 }
