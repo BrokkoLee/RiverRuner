@@ -16,6 +16,8 @@ public class GamePanel extends JPanel implements Runnable
     public static int height;
     private boolean running=false;
 
+    SpriteSheet sheet=new SpriteSheet("/textures/sprite.png");
+
     public GamePanel(int width, int height)
     {
         this.width=width;
@@ -91,8 +93,9 @@ public class GamePanel extends JPanel implements Runnable
     {
         if(graphics2D!=null)
         {
-            graphics2D.setColor(new Color(0x000000));
+            graphics2D.setColor(new Color(0x5C5C5C));
             graphics2D.fillRect(0,0,width,height);
+            graphics2D.dispose();
         }
     }
 
@@ -100,6 +103,8 @@ public class GamePanel extends JPanel implements Runnable
     {
         Graphics graphics=(Graphics) this.getGraphics();
         graphics.drawImage(image,0,0,width,height,null);
+
+
         graphics.dispose();
     }
 
