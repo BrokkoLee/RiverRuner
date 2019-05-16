@@ -7,7 +7,7 @@ import java.awt.image.BufferedImage;
 public class Sprite {
     private final static SpriteSheet spriteSheet=new SpriteSheet("/textures/sprite.png");
 
-    private final static int DEFAULT_SIZE=64;
+    public final static int DEFAULT_SIZE=64;
 
 
 
@@ -15,8 +15,7 @@ public class Sprite {
 
 
     private BufferedImage texture;
-    public Sprite(Point start,int size)
-    {
+    private Sprite(Point start,int size){
         texture=spriteSheet.crop(start,size);
     }
 
@@ -24,7 +23,4 @@ public class Sprite {
         return texture;
     }
 
-    public static int getDefaultSize() {
-        return DEFAULT_SIZE;
-    }
 }

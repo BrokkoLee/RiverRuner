@@ -108,7 +108,7 @@ public class GamePanel extends JPanel implements Runnable
 
 
         graphics.drawImage(image,0,0,width,height,null);
-        graphics.drawImage(Sprite.defaultTexture.getTexture(),0,0,Sprite.getDefaultSize(),Sprite.getDefaultSize(),null);
+        graphics.drawImage(Sprite.defaultTexture.getTexture(),0,0,Sprite.DEFAULT_SIZE,Sprite.DEFAULT_SIZE,null);
 
 
         //end drawing
