@@ -65,7 +65,6 @@ public class GamePanel extends Canvas implements Runnable
 
             if (deltaF >= 1) {
                 render();
-                //draw();
                 frames++;
                 deltaF--;
             }
@@ -84,7 +83,6 @@ public class GamePanel extends Canvas implements Runnable
     public void init()
     {
         running=true;
-
     }
 
     public void update()
@@ -102,9 +100,9 @@ public class GamePanel extends Canvas implements Runnable
             createBufferStrategy(3);
             return;
         }
-
-        /*graphics.setColor(new Color(0x5C5C5C));
-        graphics.fillRect(0,0,width,height);*/
+        graphics=bs.getDrawGraphics();
+        graphics.setColor(new Color(0x5C5C5C));
+        graphics.fillRect(0,0,width,height);
 
         //draw here
 
@@ -113,7 +111,7 @@ public class GamePanel extends Canvas implements Runnable
 
 
         //end drawing
-        graphics=bs.getDrawGraphics();
+        bs.show();
         graphics.dispose();
     }
 
