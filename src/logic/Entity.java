@@ -13,10 +13,13 @@ public abstract class Entity {
     public abstract void update();
     public Entity(Sprite sprite, Coordinate coordinate)
     {
-        this.texture=sprite.getTexture();
+        setTexture(sprite);
         setCoordinate(coordinate);
     }
-
+    public void setTexture(Sprite sprite)
+    {
+        this.texture=sprite.getTexture();
+    }
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }

@@ -18,7 +18,7 @@ public class Window extends JFrame
     {
         setTitle("River runner");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setContentPane(new GamePanel(width,height));
+        add(new GamePanel(width,height));
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
