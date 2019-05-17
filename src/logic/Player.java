@@ -21,7 +21,6 @@ public class Player extends Creature{
     public void move() {
         int x=getX();
         int y=getY();
-        x++;
         setCoordinate(new Coordinate(x,y));
     }
 
