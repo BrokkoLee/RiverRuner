@@ -18,9 +18,9 @@ public class SpriteSheet {
             e.printStackTrace();
         }
     }
-    public BufferedImage crop(Coordinate start, int size)
+    public BufferedImage crop(Coordinate start, int width, int height)
     {
-        return image.getSubimage(start.getX(),start.getY(),size,size);
+        return image.getSubimage(start.getX(),start.getY(),width,height);
     }
 
 }

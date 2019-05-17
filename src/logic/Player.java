@@ -3,9 +3,13 @@ package logic;
 import gfx.Sprite;
 
 public class Player extends Creature{
+    private int width=64;
+    private int height=128;
     public Player(Coordinate startCoordinate)
     {
-        super(Sprite.defaultSprite,startCoordinate);
+        super(Sprite.playerSkin,startCoordinate);
+        setWidth(width);
+        setHeight(height);
     }
 
     @Override
@@ -15,9 +19,9 @@ public class Player extends Creature{
 
     @Override
     public void move() {
-        /*int x=getX();
+        int x=getX();
         int y=getY();
-        setCoordinate(new Coordinate(x,y));*/
+        setCoordinate(new Coordinate(x,y));
     }
 
     @Override

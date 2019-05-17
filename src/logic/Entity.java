@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 public abstract class Entity {
     private BufferedImage texture=Sprite.defaultSprite.getTexture();
     protected Coordinate coordinate=new Coordinate(0,0);
+    private int width=0;
+    private int height=0;
     public abstract void update();
     public Entity(Sprite sprite, Coordinate coordinate)
     {
@@ -18,15 +20,16 @@ public abstract class Entity {
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
-    public void render(Graphics graphics)
-    {
-        try
-        {
-            graphics.drawImage(this.texture,coordinate.getX(),coordinate.getY(),null);
+    public void render(Graphics graphics) {
+        if (width > 0 && height > 0)
+            graphics.drawImage(texture, coordinate.getX(), coordinate.getY(), width, height, null);
+    }
 
-        }catch(NullPointerException e)
-        {
-            graphics.drawImage(Sprite.defaultSprite.getTexture(),coordinate.getX(),coordinate.getY(),null);
-        }
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }
