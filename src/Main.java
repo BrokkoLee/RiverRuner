@@ -3,6 +3,7 @@ import gfx.Window;
 public class Main {
 
     public static void main(String[] args) {
-        Window window=new Window(800,600);
+        Window game=new Window(800,600);
+        game.start();
     }
 }

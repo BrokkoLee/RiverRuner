@@ -2,7 +2,7 @@ package logic;
 
 import gfx.Sprite;
 
-import java.awt.*;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public abstract class Entity {
@@ -16,6 +16,11 @@ public abstract class Entity {
         setTexture(sprite);
         setCoordinate(coordinate);
     }
+    public Entity(Coordinate coordinate)
+    {
+        setCoordinate(coordinate);
+    }
+
     public void setTexture(Sprite sprite)
     {
         this.texture=sprite.getTexture();

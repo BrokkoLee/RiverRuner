@@ -18,10 +18,14 @@ public class Window extends JFrame
     {
         setTitle("River runner");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        add(new GamePanel(width,height));
-        pack();
         setLocationRelativeTo(null);
         setVisible(true);
         setResizable(false);
+        setAutoRequestFocus(true);
+    }
+    public void start()
+    {
+        add(new GamePanel(width,height));
+        pack();
     }
 }

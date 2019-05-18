@@ -7,7 +7,7 @@ public class Player extends Creature{
     private int height=128;
     public Player(Coordinate startCoordinate)
     {
-        super(Sprite.MCplayerSprite,startCoordinate);
+        super(Sprite.PlayerSprites,3,startCoordinate);
         setWidth(width);
         setHeight(height);
     }
