@@ -22,6 +22,7 @@ public class GamePanel extends Canvas implements Runnable
     private Graphics graphics;
 
     Entity player=new Player(new Coordinate(50,50));
+    Entity player2=new Player(new Coordinate(150,150));
     public static KeyManager keyManager=new KeyManager();
 
     public GamePanel(int width, int height)
@@ -91,6 +92,7 @@ public class GamePanel extends Canvas implements Runnable
     public void update()
     {
         player.update();
+        player2.update();
     }
 
     public void render()
@@ -121,6 +123,7 @@ public class GamePanel extends Canvas implements Runnable
     public void draw()
     {
         player.render(graphics);
+        player2.render(graphics);
     }
 
     public void getInput()
