@@ -27,26 +27,26 @@ public class Sprite {
     public static Sprite[] PlayerSprites={
             //down movements here
             new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1052,896),64,96),
+            new Sprite(new Coordinate(1152,896),64,96),
             new Sprite(new Coordinate(1216,896),64,96),
             //down movements end
 
             //left movements here
-            new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1088,896),64,96),
+            new Sprite(new Coordinate(1088,992),64,96),
+            new Sprite(new Coordinate(1152,992),64,96),
+            new Sprite(new Coordinate(1216,992),64,96),
             //left movements end
 
             //right movements here
-            new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1088,896),64,96),
+            new Sprite(new Coordinate(1088,1088),64,96),
+            new Sprite(new Coordinate(1152,1088),64,96),
+            new Sprite(new Coordinate(1216,1088),64,96),
             //right movements end
 
             //up movements here
-            new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1088,896),64,96),
-            new Sprite(new Coordinate(1088,896),64,96),
+            new Sprite(new Coordinate(1088,1184),64,96),
+            new Sprite(new Coordinate(1152,1184),64,96),
+            new Sprite(new Coordinate(1216,1184),64,96),
             //up movements end
     };
 

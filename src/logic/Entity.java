@@ -13,7 +13,10 @@ public abstract class Entity {
     public abstract void update();
     public Entity(Sprite sprite, Coordinate coordinate)
     {
-        setTexture(sprite);
+        if (sprite!=null)
+        {
+            setTexture(sprite);
+        }
         setCoordinate(coordinate);
     }
     public Entity(Coordinate coordinate)
@@ -39,5 +42,13 @@ public abstract class Entity {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }
