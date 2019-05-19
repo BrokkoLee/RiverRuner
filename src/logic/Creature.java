@@ -6,7 +6,6 @@ import java.awt.Graphics;
 
 public abstract class Creature extends Entity{
     private Direction CurrentMovementDirection;
-    private Direction LastMovementDirection;
     private Sprite[] AnimationTexturesDown;
     private Sprite[] AnimationTexturesLeft;
     private Sprite[] AnimationTexturesRight;
@@ -43,10 +42,7 @@ public abstract class Creature extends Entity{
     @Override
     public void render(Graphics graphics)
     {
-        if (LastMovementDirection!=CurrentMovementDirection)
-        {
-            CurrentMovementDirection=LastMovementDirection;
-        }
+
     }
 
     public void setCurrentMovementDirection(Direction currentMovementDirection)
@@ -63,35 +59,18 @@ public abstract class Creature extends Entity{
         switch (CurrentMovementDirection)
         {
             case up:
-                playUpAnimation();
+
                 break;
             case down:
-                playDownAnimation();
+
                 break;
             case left:
-                playLeftAnimation();
+
                 break;
             case right:
-                playRightAnimation();
+
                 break;
         }
     }
 
-    public void playDownAnimation()
-    {
-        CurrentAnimationIndex*=0;
-
-    }
-    public void playLeftAnimation()
-    {
-
-    }
-    public void playRightAnimation()
-    {
-
-    }
-    public void playUpAnimation()
-    {
-
-    }
 }
