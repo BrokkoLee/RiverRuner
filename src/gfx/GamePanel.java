@@ -2,6 +2,7 @@ package gfx;
 
 
 import logic.Entity;
+import logic.KeyManager;
 import logic.Player;
 import logic.Coordinate;
 
@@ -21,6 +22,7 @@ public class GamePanel extends Canvas implements Runnable
     private Graphics graphics;
 
     Entity player=new Player(new Coordinate(50,50));
+    public static KeyManager keyManager=new KeyManager();
 
     public GamePanel(int width, int height)
     {
@@ -28,7 +30,6 @@ public class GamePanel extends Canvas implements Runnable
         this.height=height;
         setPreferredSize(new Dimension(width,height));
         setFocusable(true);
-        requestFocus();
     }
 
     public void addNotify()
@@ -83,6 +84,8 @@ public class GamePanel extends Canvas implements Runnable
     public void init()
     {
         running=true;
+        this.addKeyListener(keyManager);
+        requestFocus();
     }
 
     public void update()

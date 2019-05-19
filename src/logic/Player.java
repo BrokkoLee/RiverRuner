@@ -1,12 +1,13 @@
 package logic;
 
 import gfx.Animation;
+import gfx.GamePanel;
 import gfx.Sprite;
 
 public class Player extends Creature{
     private int width=64;
     private int height=96;
-    private final int DEFAULT_ANIMATION_SPEED=250;
+    private final int DEFAULT_ANIMATION_SPEED=500;
 
     private Sprite[] FramesMovingDown={Sprite.PlayerSprites[0],Sprite.PlayerSprites[1]};
     private Sprite[] FramesMovingLeft={Sprite.PlayerSprites[3],Sprite.PlayerSprites[4]};
@@ -18,6 +19,7 @@ public class Player extends Creature{
     private Sprite[] FramesIdleRight={Sprite.PlayerSprites[8]};
     private Sprite[] FramesIdleUp={Sprite.PlayerSprites[11]};
 
+    private KeyManager keyManager=new KeyManager();
 
     public Player(Coordinate startCoordinate)
     {
@@ -34,14 +36,28 @@ public class Player extends Creature{
 
     @Override
     public void move() {
-        int x=getX();
-        int y=getY();
-        setCoordinate(new Coordinate(x,y));
+        if (GamePanel.keyManager.up)
+        {
+            coordinate.setY(coordinate.getY()-1);
+        }
+        if(GamePanel.keyManager.down)
+        {
+            coordinate.setY(coordinate.getY()+1);
+        }
+        if(GamePanel.keyManager.left)
+        {
+            coordinate.setX(coordinate.getX()-1);
+        }
+        if(GamePanel.keyManager.right)
+        {
+            coordinate.setX(coordinate.getX()+1);
+        }
     }
 
     @Override
     public void update() {
         super.update();
+        GamePanel.keyManager.update();
         move();
     }
     public void setAnimations()

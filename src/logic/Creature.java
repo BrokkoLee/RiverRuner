@@ -1,12 +1,12 @@
 package logic;
 
 import gfx.Animation;
+import gfx.GamePanel;
 
 import java.awt.Graphics;
 
 public abstract class Creature extends Entity{
-    private Direction CurrentMovementDirection=Direction.right;
-    private MovementStatus movementStatus=MovementStatus.idle;
+    private boolean moving=false;
 
     private Animation AnimationMovingDown;
     private Animation AnimationMovingLeft;
@@ -17,9 +17,11 @@ public abstract class Creature extends Entity{
     private Animation AnimationIdleRight;
     private Animation AnimationIdleUp;
 
+    private Direction direction;
     public Creature(Coordinate coordinate)
     {
         super(coordinate);
+        direction=Direction.down;
     }
 
     public abstract boolean isHostile();
@@ -28,6 +30,8 @@ public abstract class Creature extends Entity{
     @Override
     public void update()
     {
+        updateMoving();
+        updateDirection();
         updateAnimation();
     }
     @Override
@@ -36,60 +40,46 @@ public abstract class Creature extends Entity{
         playAnimation(graphics);
     }
 
-    public void setCurrentMovementDirection(Direction currentMovementDirection)
-    {
-        this.CurrentMovementDirection = currentMovementDirection;
-    }
-
-    public Direction getCurrentMovementDirection()
-    {
-        return CurrentMovementDirection;
-    }
 
     public void playAnimation(Graphics graphics)
     {
-        switch (CurrentMovementDirection)
+        if(moving)
         {
-            case up:
-                if (movementStatus==MovementStatus.idle)
-                {
-                    graphics.drawImage(AnimationIdleUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                else
-                {
-                    graphics.drawImage(AnimationMovingUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                break;
-            case down:
-                if (movementStatus==MovementStatus.idle)
-                {
-                    graphics.drawImage(AnimationIdleDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                else
-                {
-                    graphics.drawImage(AnimationMovingDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                break;
-            case left:
-                if (movementStatus==MovementStatus.idle)
-                {
-                    graphics.drawImage(AnimationIdleLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                else
-                {
-                    graphics.drawImage(AnimationMovingLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                break;
-            case right:
-                if (movementStatus==MovementStatus.idle)
-                {
-                    graphics.drawImage(AnimationIdleRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                else
-                {
-                    graphics.drawImage(AnimationMovingRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-                }
-                break;
+            if (direction==Direction.up)
+            {
+                graphics.drawImage(AnimationMovingUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+            else if (direction==Direction.down)
+            {
+                graphics.drawImage(AnimationMovingDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+            else if (direction==Direction.left)
+            {
+                graphics.drawImage(AnimationMovingLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+            else if (direction==Direction.right)
+            {
+                graphics.drawImage(AnimationMovingRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+        }
+        else
+        {
+            if (direction==Direction.up)
+            {
+                graphics.drawImage(AnimationIdleUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+            else if (direction==Direction.down)
+            {
+                graphics.drawImage(AnimationIdleDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+            else if (direction==Direction.left)
+            {
+                graphics.drawImage(AnimationIdleLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
+            else if (direction==Direction.right)
+            {
+                graphics.drawImage(AnimationIdleRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            }
         }
     }
 
@@ -104,6 +94,37 @@ public abstract class Creature extends Entity{
         AnimationMovingLeft.update();
         AnimationMovingRight.update();
         AnimationMovingUp.update();
+    }
+    public void updateDirection()
+    {
+        if(GamePanel.keyManager.down)
+        {
+            direction=Direction.down;
+        }
+        else if(GamePanel.keyManager.up)
+        {
+            direction=Direction.up;
+        }
+        else if(GamePanel.keyManager.left)
+        {
+            direction=Direction.left;
+        }
+        else if(GamePanel.keyManager.right)
+        {
+            direction=Direction.right;
+        }
+
+    }
+    public void updateMoving()
+    {
+        if(GamePanel.keyManager.up || GamePanel.keyManager.down || GamePanel.keyManager.right || GamePanel.keyManager.left)
+        {
+            moving=true;
+        }
+        else
+        {
+            moving=false;
+        }
     }
 
     public int getX() {
