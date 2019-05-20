@@ -1,10 +1,7 @@
 package gfx;
 
 
-import logic.Entity;
-import logic.KeyManager;
-import logic.Player;
-import logic.Coordinate;
+import logic.*;
 
 
 import java.awt.Canvas;
@@ -16,13 +13,13 @@ import java.awt.image.BufferStrategy;
 public class GamePanel extends Canvas implements Runnable
 {
     private Thread thread;
-    public static int width;
-    public static int height;
+    private int width;
+    private int height;
     private boolean running=false;
     private Graphics graphics;
 
-    Entity player=new Player(new Coordinate(50,50));
-    Entity player2=new Player(new Coordinate(150,150));
+    Entity player=new KnightPlayer(new Coordinate(50,50));
+
     public static KeyManager keyManager=new KeyManager();
 
     public GamePanel(int width, int height)
@@ -46,7 +43,7 @@ public class GamePanel extends Canvas implements Runnable
         init();
         long initialTime = System.nanoTime();
         final double timeU = 1000000000 / 60;
-        final double timeF = 1000000000 /60;
+        final double timeF = 1000000000 / 60;
         double deltaU = 0, deltaF = 0;
         int frames = 0, ticks = 0;
         long timer = System.currentTimeMillis();
@@ -92,7 +89,6 @@ public class GamePanel extends Canvas implements Runnable
     public void update()
     {
         player.update();
-        player2.update();
     }
 
     public void render()
@@ -123,7 +119,6 @@ public class GamePanel extends Canvas implements Runnable
     public void draw()
     {
         player.render(graphics);
-        player2.render(graphics);
     }
 
     public void getInput()

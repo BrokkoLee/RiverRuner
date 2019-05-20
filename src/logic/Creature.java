@@ -2,20 +2,34 @@ package logic;
 
 import gfx.Animation;
 import gfx.GamePanel;
+import gfx.Sprite;
 
 import java.awt.Graphics;
 
 public abstract class Creature extends Entity{
     private boolean moving=false;
 
-    private Animation AnimationMovingDown;
-    private Animation AnimationMovingLeft;
-    private Animation AnimationMovingRight;
-    private Animation AnimationMovingUp;
-    private Animation AnimationIdleDown;
-    private Animation AnimationIdleLeft;
-    private Animation AnimationIdleRight;
-    private Animation AnimationIdleUp;
+    private Sprite[] framesMovingDown={Sprite.defaultSprite};
+    private Sprite[] framesMovingLeft={Sprite.defaultSprite};
+    private Sprite[] framesMovingRight={Sprite.defaultSprite};
+    private Sprite[] framesMovingUp={Sprite.defaultSprite};
+
+    private Sprite[] framesIdleDown={Sprite.defaultSprite};
+    private Sprite[] framesIdleLeft={Sprite.defaultSprite};
+    private Sprite[] framesIdleRight={Sprite.defaultSprite};
+    private Sprite[] framesIdleUp={Sprite.defaultSprite};
+
+
+    private Animation animationMovingDown;
+    private Animation animationMovingLeft;
+    private Animation animationMovingRight;
+    private Animation animationMovingUp;
+
+    private Animation animationIdleDown;
+    private Animation animationIdleLeft;
+    private Animation animationIdleRight;
+    private Animation animationIdleUp;
+
 
     private Direction direction;
     public Creature(Coordinate coordinate)
@@ -47,53 +61,53 @@ public abstract class Creature extends Entity{
         {
             if (direction==Direction.up)
             {
-                graphics.drawImage(AnimationMovingUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationMovingUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
             else if (direction==Direction.down)
             {
-                graphics.drawImage(AnimationMovingDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationMovingDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
             else if (direction==Direction.left)
             {
-                graphics.drawImage(AnimationMovingLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationMovingLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
             else if (direction==Direction.right)
             {
-                graphics.drawImage(AnimationMovingRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationMovingRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
         }
         else
         {
             if (direction==Direction.up)
             {
-                graphics.drawImage(AnimationIdleUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationIdleUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
             else if (direction==Direction.down)
             {
-                graphics.drawImage(AnimationIdleDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationIdleDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
             else if (direction==Direction.left)
             {
-                graphics.drawImage(AnimationIdleLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationIdleLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
             else if (direction==Direction.right)
             {
-                graphics.drawImage(AnimationIdleRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                graphics.drawImage(animationIdleRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
             }
         }
     }
 
     public void updateAnimation()
     {
-        AnimationIdleUp.update();
-        AnimationIdleDown.update();
-        AnimationIdleLeft.update();
-        AnimationIdleRight.update();
+        animationIdleUp.update();
+        animationIdleDown.update();
+        animationIdleLeft.update();
+        animationIdleRight.update();
 
-        AnimationMovingDown.update();
-        AnimationMovingLeft.update();
-        AnimationMovingRight.update();
-        AnimationMovingUp.update();
+        animationMovingDown.update();
+        animationMovingLeft.update();
+        animationMovingRight.update();
+        animationMovingUp.update();
     }
     public void updateDirection()
     {
@@ -126,6 +140,20 @@ public abstract class Creature extends Entity{
             moving=false;
         }
     }
+    public abstract void setAnimationFrames();
+
+    public void setAnimations()
+    {
+        setAnimationMovingDown(new Animation(framesMovingDown));
+        setAnimationMovingLeft(new Animation(framesMovingLeft));
+        setAnimationMovingRight(new Animation(framesMovingRight));
+        setAnimationMovingUp(new Animation(framesMovingUp));
+
+        setAnimationIdleDown(new Animation(framesIdleDown));
+        setAnimationIdleLeft(new Animation(framesIdleLeft));
+        setAnimationIdleRight(new Animation(framesIdleRight));
+        setAnimationIdleUp(new Animation(framesIdleUp));
+    }
 
     public int getX() {
         return coordinate.getX();
@@ -135,35 +163,105 @@ public abstract class Creature extends Entity{
         return coordinate.getY();
     }
 
+    public void setFramesMovingDown(Sprite[] framesMovingDown) {
+        this.framesMovingDown = framesMovingDown;
+    }
+
+    public void setFramesMovingLeft(Sprite[] framesMovingLeft) {
+        this.framesMovingLeft = framesMovingLeft;
+    }
+
+    public void setFramesMovingRight(Sprite[] framesMovingRight) {
+        this.framesMovingRight = framesMovingRight;
+    }
+
+    public void setFramesMovingUp(Sprite[] framesMovingUp) {
+        this.framesMovingUp = framesMovingUp;
+    }
+
+    public void setFramesIdleDown(Sprite[] framesIdleDown) {
+        this.framesIdleDown = framesIdleDown;
+    }
+
+    public void setFramesIdleLeft(Sprite[] framesIdleLeft) {
+        this.framesIdleLeft = framesIdleLeft;
+    }
+
+    public void setFramesIdleRight(Sprite[] framesIdleRight) {
+        this.framesIdleRight = framesIdleRight;
+    }
+
+    public void setFramesIdleUp(Sprite[] framesIdleUp) {
+        this.framesIdleUp = framesIdleUp;
+    }
+
     public void setAnimationMovingDown(Animation animationMovingDown) {
-        AnimationMovingDown = animationMovingDown;
+        this.animationMovingDown = animationMovingDown;
     }
 
     public void setAnimationMovingLeft(Animation animationMovingLeft) {
-        AnimationMovingLeft = animationMovingLeft;
+        this.animationMovingLeft = animationMovingLeft;
     }
 
     public void setAnimationMovingRight(Animation animationMovingRight) {
-        AnimationMovingRight = animationMovingRight;
+        this.animationMovingRight = animationMovingRight;
     }
 
     public void setAnimationMovingUp(Animation animationMovingUp) {
-        AnimationMovingUp = animationMovingUp;
+        this.animationMovingUp = animationMovingUp;
     }
 
     public void setAnimationIdleDown(Animation animationIdleDown) {
-        AnimationIdleDown = animationIdleDown;
+        this.animationIdleDown = animationIdleDown;
     }
 
     public void setAnimationIdleLeft(Animation animationIdleLeft) {
-        AnimationIdleLeft = animationIdleLeft;
+        this.animationIdleLeft = animationIdleLeft;
     }
 
     public void setAnimationIdleRight(Animation animationIdleRight) {
-        AnimationIdleRight = animationIdleRight;
+        this.animationIdleRight = animationIdleRight;
     }
 
     public void setAnimationIdleUp(Animation animationIdleUp) {
-        AnimationIdleUp = animationIdleUp;
+        this.animationIdleUp = animationIdleUp;
     }
+
+    public Animation getAnimationMovingDown() {
+        return animationMovingDown;
+    }
+
+    public Animation getAnimationMovingLeft() {
+        return animationMovingLeft;
+    }
+
+    public Animation getAnimationMovingRight() {
+        return animationMovingRight;
+    }
+
+    public Animation getAnimationMovingUp() {
+        return animationMovingUp;
+    }
+
+    public Animation getAnimationIdleDown() {
+        return animationIdleDown;
+    }
+
+    public Animation getAnimationIdleLeft() {
+        return animationIdleLeft;
+    }
+
+    public Animation getAnimationIdleRight() {
+        return animationIdleRight;
+    }
+
+    public Animation getAnimationIdleUp() {
+        return animationIdleUp;
+    }
+
+    public void setAnimationSpeed(Animation animation, int newSpeed)
+    {
+        animation.setSpeed(newSpeed);
+    }
+
 }

@@ -1,16 +1,14 @@
 package gfx;
 
-import java.awt.Graphics;
-
 public class Animation {
     private Sprite[] frames;
     private int speed;
     private int index;
     private long lastTime;
     private long timer;
-    public Animation(Sprite[] frames, int speed)
+    public Animation(Sprite[] frames)
     {
-        this.speed=speed;
+        setSpeed(0);
         this.frames=frames;
         index=0;
         timer=0;
@@ -36,5 +34,7 @@ public class Animation {
     {
         return frames[index];
     }
-
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
 }

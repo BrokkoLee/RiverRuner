@@ -18,7 +18,6 @@ public class Window extends JFrame
     {
         setTitle("River runner");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
         setResizable(false);
         setAutoRequestFocus(true);
     }
@@ -27,5 +26,6 @@ public class Window extends JFrame
         add(new GamePanel(width,height));
         pack();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 }
