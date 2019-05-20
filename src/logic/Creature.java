@@ -59,21 +59,19 @@ public abstract class Creature extends Entity{
     {
         if(moving)
         {
-            if (direction==Direction.up)
-            {
-                graphics.drawImage(animationMovingUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-            }
-            else if (direction==Direction.down)
-            {
-                graphics.drawImage(animationMovingDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-            }
-            else if (direction==Direction.left)
-            {
-                graphics.drawImage(animationMovingLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-            }
-            else if (direction==Direction.right)
-            {
-                graphics.drawImage(animationMovingRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+            switch (direction) {
+                case up:
+                    graphics.drawImage(animationMovingUp.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    break;
+                case down:
+                    graphics.drawImage(animationMovingDown.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    break;
+                case left:
+                    graphics.drawImage(animationMovingLeft.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    break;
+                case right:
+                    graphics.drawImage(animationMovingRight.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    break;
             }
         }
         else
