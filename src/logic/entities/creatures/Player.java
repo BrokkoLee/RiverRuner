@@ -1,6 +1,7 @@
-package logic;
+package logic.entities.creatures;
 
 import gfx.GamePanel;
+import logic.Coordinate;
 
 public  abstract class Player extends Creature{
 
@@ -43,6 +44,6 @@ public  abstract class Player extends Creature{
     }
     public void setSpeed(int newSpeed)
     {
-
+        this.speed=newSpeed;
     }
 }

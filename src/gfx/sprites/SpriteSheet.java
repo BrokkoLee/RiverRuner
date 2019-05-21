@@ -1,4 +1,4 @@
-package gfx;
+package gfx.sprites;
 
 import javax.imageio.ImageIO;
 

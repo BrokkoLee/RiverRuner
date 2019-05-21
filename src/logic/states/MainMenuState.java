@@ -1,4 +1,4 @@
-package logic;
+package logic.states;
 
 import java.awt.Graphics;
 import java.awt.Font;
@@ -16,16 +16,24 @@ public class MainMenuState extends State{
 
     @Override
     public void update() {
-        if (GamePanel.keyManager.startGame)
-        {
-            GamePanel.setState(State.gameState);
-        }
+        manageStateSwitching();
     }
 
     @Override
     public void render(Graphics graphics) {
+        graphics.setColor(new Color(0x3C86FF));
+        graphics.fillRect(0,0,Window.width,Window.height);
+
         graphics.setColor(new Color(0xF9000D));
         graphics.setFont(new Font("Courier",Font.BOLD | Font.ITALIC,35));
-        graphics.drawString("Press SPACE to start",Window.width/2,Window.height/2);
+        graphics.drawString("Press LEFT MOUSE BUTTON to start",5,Window.height/2);
+    }
+
+    @Override
+    public void manageStateSwitching() {
+        if (GamePanel.mouseManager.left)
+        {
+            GamePanel.setState(State.gameState);
+        }
     }
 }

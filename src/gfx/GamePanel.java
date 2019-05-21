@@ -1,7 +1,9 @@
 package gfx;
 
 
-import logic.*;
+import logic.input.KeyManager;
+import logic.input.MouseManager;
+import logic.states.State;
 
 
 import java.awt.Canvas;
@@ -22,6 +24,7 @@ public class GamePanel extends Canvas implements Runnable
 
 
     public static KeyManager keyManager=new KeyManager();
+    public static MouseManager mouseManager=new MouseManager();
 
     public GamePanel(int width, int height)
     {
@@ -84,6 +87,7 @@ public class GamePanel extends Canvas implements Runnable
     {
         running=true;
         this.addKeyListener(keyManager);
+        this.addMouseListener(mouseManager);
         requestFocus();
     }
 
@@ -103,8 +107,6 @@ public class GamePanel extends Canvas implements Runnable
             return;
         }
         graphics=bs.getDrawGraphics();
-        graphics.setColor(new Color(0x3C86FF));
-        graphics.fillRect(0,0,width,height);
 
         //draw here
 
@@ -120,7 +122,8 @@ public class GamePanel extends Canvas implements Runnable
 
     public void getInput()
     {
-        GamePanel.keyManager.update();
+        keyManager.update();
+        mouseManager.update();
     }
     public static void setState(State newState)
     {

@@ -1,6 +1,7 @@
-package logic;
+package logic.entities.creatures;
 
-import gfx.Sprite;
+import gfx.sprites.Sprite;
+import logic.Coordinate;
 
 public class KnightPlayer extends Player {
 
@@ -14,12 +15,13 @@ public class KnightPlayer extends Player {
     private Sprite[] framesIdleRight ={Sprite.KnightSprites[8]};
     private Sprite[] framesIdleUp ={Sprite.KnightSprites[11]};
 
+    private int speed=1;
     public KnightPlayer(Coordinate startCoordinate)
     {
         super(startCoordinate);
         setWidth(64);
         setHeight(96);
-        setSpeed(1);
+        setSpeed(speed);
         setAnimationFrames();
         setAnimations();
         setAnimationSpeeds();

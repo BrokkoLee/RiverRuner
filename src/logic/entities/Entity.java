@@ -1,6 +1,7 @@
-package logic;
+package logic.entities;
 
-import gfx.Sprite;
+import gfx.sprites.Sprite;
+import logic.Coordinate;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;

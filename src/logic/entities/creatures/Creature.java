@@ -1,12 +1,15 @@
-package logic;
+package logic.entities.creatures;
 
 import gfx.Animation;
 import gfx.GamePanel;
-import gfx.Sprite;
+import gfx.sprites.Sprite;
+import logic.Coordinate;
+import logic.Direction;
+import logic.entities.Entity;
 
 import java.awt.Graphics;
 
-public abstract class Creature extends Entity{
+public abstract class Creature extends Entity {
     private boolean moving=false;
 
     private Sprite[] framesMovingDown={Sprite.defaultSprite};

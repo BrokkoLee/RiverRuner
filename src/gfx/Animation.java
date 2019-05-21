@@ -1,5 +1,7 @@
 package gfx;
 
+import gfx.sprites.Sprite;
+
 public class Animation {
     private Sprite[] frames;
     private int speed;

@@ -1,6 +1,7 @@
-package logic;
+package logic.entities.creatures;
 
-import gfx.Sprite;
+import gfx.sprites.Sprite;
+import logic.Coordinate;
 
 public class ArcherPlayer extends Player{
 
@@ -8,7 +9,7 @@ public class ArcherPlayer extends Player{
     private Sprite[] framesIdleLeft ={Sprite.ArcherSprites[9]};
     private Sprite[] framesIdleRight ={Sprite.ArcherSprites[27]};
     private Sprite[] framesIdleDown ={Sprite.ArcherSprites[18]};
-    private int speed=3;
+    private int speed=2;
 
     private Sprite[] framesMovingUp ={
             Sprite.ArcherSprites[1],
@@ -54,8 +55,8 @@ public class ArcherPlayer extends Player{
     public ArcherPlayer(Coordinate startCoordinate)
     {
         super(startCoordinate);
-        setWidth(64);
-        setHeight(64);
+        setWidth(64*2);
+        setHeight(64*2);
         setSpeed(speed);
         setAnimationFrames();
         setAnimations();
