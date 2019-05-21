@@ -9,6 +9,7 @@ public class KeyManager implements KeyListener {
     public boolean down;
     public boolean left;
     public boolean right;
+    public boolean startGame;
 
     public KeyManager() {
         keys = new boolean[1024];
@@ -20,6 +21,7 @@ public class KeyManager implements KeyListener {
         down=keys[KeyEvent.VK_S];
         left=keys[KeyEvent.VK_A];
         right=keys[KeyEvent.VK_D];
+        startGame=keys[KeyEvent.VK_SPACE];
     }
     @Override
     public void keyPressed(KeyEvent e) {

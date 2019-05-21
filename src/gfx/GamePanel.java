@@ -18,7 +18,8 @@ public class GamePanel extends Canvas implements Runnable
     private boolean running=false;
     private Graphics graphics;
 
-    Entity player=new KnightPlayer(new Coordinate(50,50));
+    public static State state=State.mainMenuState;
+
 
     public static KeyManager keyManager=new KeyManager();
 
@@ -88,7 +89,7 @@ public class GamePanel extends Canvas implements Runnable
 
     public void update()
     {
-        player.update();
+        state.update();
     }
 
     public void render()
@@ -102,13 +103,13 @@ public class GamePanel extends Canvas implements Runnable
             return;
         }
         graphics=bs.getDrawGraphics();
-        graphics.setColor(new Color(0x5C5C5C));
+        graphics.setColor(new Color(0x3C86FF));
         graphics.fillRect(0,0,width,height);
 
         //draw here
 
 
-        draw();
+        state.render(graphics);
 
 
         //end drawing
@@ -116,16 +117,15 @@ public class GamePanel extends Canvas implements Runnable
         graphics.dispose();
     }
 
-    public void draw()
-    {
-        player.render(graphics);
-    }
 
     public void getInput()
     {
-
+        GamePanel.keyManager.update();
     }
-
+    public static void setState(State newState)
+    {
+        state=newState;
+    }
 
 
 }

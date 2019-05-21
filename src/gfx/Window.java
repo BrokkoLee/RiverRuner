@@ -4,14 +4,14 @@ import javax.swing.JFrame;
 
 public class Window extends JFrame
 {
-    private int width;
-    private int height;
+    public static int width;
+    public static int height;
 
 
-    public Window(int width, int height)
+    public Window()
     {
-        this.width=width;
-        this.height=height;
+        this.width=800;
+        this.height=600;
         initializeWindow();
     }
     public void initializeWindow()

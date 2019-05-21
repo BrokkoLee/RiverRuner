@@ -3,9 +3,8 @@ package logic;
 import gfx.GamePanel;
 
 public  abstract class Player extends Creature{
-    private int speed=2;
 
-    private KeyManager keyManager=new KeyManager();
+    private int speed=2;
 
     public Player(Coordinate startCoordinate)
     {
@@ -40,7 +39,6 @@ public  abstract class Player extends Creature{
     @Override
     public void update() {
         super.update();
-        GamePanel.keyManager.update();
         move();
     }
     public void setSpeed(int newSpeed)

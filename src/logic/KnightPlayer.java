@@ -42,14 +42,14 @@ public class KnightPlayer extends Player {
     }
     public void setAnimationSpeeds()
     {
-        setAnimationSpeed(getAnimationIdleDown(),1000/framesIdleDown.length);
-        setAnimationSpeed(getAnimationIdleUp(),1000/framesIdleUp.length);
-        setAnimationSpeed(getAnimationIdleLeft(),1000/framesIdleLeft.length);
-        setAnimationSpeed(getAnimationIdleRight(),1000/framesIdleRight.length);
+        setAnimationSpeed(getAnimationIdleDown(),500/framesIdleDown.length);
+        setAnimationSpeed(getAnimationIdleUp(),500/framesIdleUp.length);
+        setAnimationSpeed(getAnimationIdleLeft(),500/framesIdleLeft.length);
+        setAnimationSpeed(getAnimationIdleRight(),500/framesIdleRight.length);
 
-        setAnimationSpeed(getAnimationMovingDown(),1000/framesMovingDown.length);
-        setAnimationSpeed(getAnimationMovingUp(),1000/framesMovingUp.length);
-        setAnimationSpeed(getAnimationMovingLeft(),1000/framesMovingLeft.length);
-        setAnimationSpeed(getAnimationMovingRight(),1000/framesMovingRight.length);
+        setAnimationSpeed(getAnimationMovingDown(),500/framesMovingDown.length);
+        setAnimationSpeed(getAnimationMovingUp(),500/framesMovingUp.length);
+        setAnimationSpeed(getAnimationMovingLeft(),500/framesMovingLeft.length);
+        setAnimationSpeed(getAnimationMovingRight(),500/framesMovingRight.length);
     }
 }
