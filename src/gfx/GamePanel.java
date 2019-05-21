@@ -9,7 +9,6 @@ import logic.states.State;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Color;
 import java.awt.image.BufferStrategy;
 
 public class GamePanel extends Canvas implements Runnable
@@ -88,6 +87,7 @@ public class GamePanel extends Canvas implements Runnable
         running=true;
         this.addKeyListener(keyManager);
         this.addMouseListener(mouseManager);
+        this.addMouseMotionListener(mouseManager);
         requestFocus();
     }
 

@@ -1,11 +1,11 @@
 package logic.input;
 
-import java.awt.Point;
-import java.awt.MouseInfo;
+import javax.swing.*;
+import javax.swing.event.MouseInputListener;
+import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class MouseManager implements MouseListener {
+public class MouseManager implements MouseInputListener {
 
     private boolean[] buttons;
     public boolean left;
@@ -15,26 +15,30 @@ public class MouseManager implements MouseListener {
     public MouseManager()
     {
         buttons=new boolean[10];
+        coordinate=new Point();
     }
     public void update()
     {
-        coordinate=MouseInfo.getPointerInfo().getLocation();
         left=buttons[MouseEvent.BUTTON1];
         right=buttons[MouseEvent.BUTTON2];
     }
     @Override
-    public void mouseClicked(MouseEvent e) {
-
+    public void mouseMoved(MouseEvent e) {
+        coordinate= MouseInfo.getPointerInfo().getLocation();
+        SwingUtilities.convertPointFromScreen(coordinate,e.getComponent());
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
         buttons[e.getButton()]=true;
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
         buttons[e.getButton()]=false;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
     }
 
     @Override
@@ -44,6 +48,11 @@ public class MouseManager implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
 
     }
 }

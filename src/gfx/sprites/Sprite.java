@@ -101,7 +101,7 @@ public class Sprite {
     };
 
     private BufferedImage texture;
-    private Sprite(Coordinate start, int width,int height){
+    private Sprite(Coordinate start, int width, int height){
         texture=spriteSheet.crop(start,width,height);
     }
 
