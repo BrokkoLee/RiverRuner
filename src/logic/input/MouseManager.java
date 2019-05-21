@@ -1,8 +1,9 @@
 package logic.input;
 
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
-import java.awt.*;
+import java.awt.Point;
+import java.awt.MouseInfo;
 import java.awt.event.MouseEvent;
 
 public class MouseManager implements MouseInputListener {

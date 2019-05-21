@@ -4,7 +4,7 @@ import gfx.GamePanel;
 import logic.Coordinate;
 import logic.states.State;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class PlayButton extends Button {
 

@@ -2,7 +2,6 @@ package logic.entities.creatures;
 
 import gfx.Animation;
 import gfx.GamePanel;
-import gfx.sprites.Sprite;
 import logic.Coordinate;
 import logic.Direction;
 import logic.entities.Entity;
