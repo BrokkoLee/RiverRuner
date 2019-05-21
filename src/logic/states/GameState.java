@@ -2,7 +2,7 @@ package logic.states;
 
 import gfx.GamePanel;
 import logic.Coordinate;
-import logic.entities.creatures.ArcherPlayer;
+import logic.entities.creatures.players.ArcherPlayer;
 import logic.entities.Entity;
 import gfx.Window;
 import java.awt.Graphics;

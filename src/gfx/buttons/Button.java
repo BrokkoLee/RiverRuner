@@ -47,7 +47,10 @@ public abstract class Button {
     }
     public boolean checkIfMouseIsOnButton()
     {
-        if(GamePanel.mouseManager.coordinate.x>buttonPosition.getX() && GamePanel.mouseManager.coordinate.x<buttonPosition.getX()+width && GamePanel.mouseManager.coordinate.y>buttonPosition.getY() && GamePanel.mouseManager.coordinate.y<buttonPosition.getY()+height)
+        if(GamePanel.mouseManager.coordinate.x>buttonPosition.getX() &&
+           GamePanel.mouseManager.coordinate.x<buttonPosition.getX()+width &&
+           GamePanel.mouseManager.coordinate.y>buttonPosition.getY() &&
+           GamePanel.mouseManager.coordinate.y<buttonPosition.getY()+height)
         {
             return true;
         }

@@ -1,5 +1,6 @@
-package logic.entities.creatures;
+package logic.entities.creatures.players;
 
+import gfx.Animation;
 import gfx.sprites.Sprite;
 import logic.Coordinate;
 
@@ -58,25 +59,23 @@ public class ArcherPlayer extends Player{
         setWidth(64*2);
         setHeight(64*2);
         setSpeed(speed);
-        setAnimationFrames();
         setAnimations();
         setAnimationSpeeds();
     }
 
     @Override
-    public void setAnimationFrames() {
-        setFramesMovingDown(framesMovingDown);
-        setFramesIdleDown(framesIdleDown);
+    public void setAnimations() {
+        setAnimationIdleDown(new Animation(framesIdleDown));
+        setAnimationIdleUp(new Animation(framesIdleUp));
+        setAnimationIdleLeft(new Animation(framesIdleLeft));
+        setAnimationIdleRight(new Animation(framesIdleRight));
 
-        setFramesMovingLeft(framesMovingLeft);
-        setFramesIdleLeft(framesIdleLeft);
-
-        setFramesMovingRight(framesMovingRight);
-        setFramesIdleRight(framesIdleRight);
-
-        setFramesMovingUp(framesMovingUp);
-        setFramesIdleUp(framesIdleUp);
+        setAnimationMovingDown(new Animation(framesMovingDown));
+        setAnimationMovingUp(new Animation(framesMovingUp));
+        setAnimationMovingLeft(new Animation(framesMovingLeft));
+        setAnimationMovingRight(new Animation(framesMovingRight));
     }
+
     public void setAnimationSpeeds()
     {
         setAnimationSpeed(getAnimationIdleDown(),1000/framesIdleDown.length);

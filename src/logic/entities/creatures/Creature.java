@@ -12,17 +12,6 @@ import java.awt.Graphics;
 public abstract class Creature extends Entity {
     private boolean moving=false;
 
-    private Sprite[] framesMovingDown={Sprite.defaultSprite};
-    private Sprite[] framesMovingLeft={Sprite.defaultSprite};
-    private Sprite[] framesMovingRight={Sprite.defaultSprite};
-    private Sprite[] framesMovingUp={Sprite.defaultSprite};
-
-    private Sprite[] framesIdleDown={Sprite.defaultSprite};
-    private Sprite[] framesIdleLeft={Sprite.defaultSprite};
-    private Sprite[] framesIdleRight={Sprite.defaultSprite};
-    private Sprite[] framesIdleUp={Sprite.defaultSprite};
-
-
     private Animation animationMovingDown;
     private Animation animationMovingLeft;
     private Animation animationMovingRight;
@@ -39,6 +28,7 @@ public abstract class Creature extends Entity {
     {
         super(coordinate);
         direction=Direction.down;
+        setAnimations();
     }
 
     public abstract boolean isHostile();
@@ -141,20 +131,8 @@ public abstract class Creature extends Entity {
             moving=false;
         }
     }
-    public abstract void setAnimationFrames();
 
-    public void setAnimations()
-    {
-        setAnimationMovingDown(new Animation(framesMovingDown));
-        setAnimationMovingLeft(new Animation(framesMovingLeft));
-        setAnimationMovingRight(new Animation(framesMovingRight));
-        setAnimationMovingUp(new Animation(framesMovingUp));
-
-        setAnimationIdleDown(new Animation(framesIdleDown));
-        setAnimationIdleLeft(new Animation(framesIdleLeft));
-        setAnimationIdleRight(new Animation(framesIdleRight));
-        setAnimationIdleUp(new Animation(framesIdleUp));
-    }
+    public abstract void setAnimations();
 
     public int getX() {
         return coordinate.getX();
@@ -162,38 +140,6 @@ public abstract class Creature extends Entity {
 
     public int getY() {
         return coordinate.getY();
-    }
-
-    public void setFramesMovingDown(Sprite[] framesMovingDown) {
-        this.framesMovingDown = framesMovingDown;
-    }
-
-    public void setFramesMovingLeft(Sprite[] framesMovingLeft) {
-        this.framesMovingLeft = framesMovingLeft;
-    }
-
-    public void setFramesMovingRight(Sprite[] framesMovingRight) {
-        this.framesMovingRight = framesMovingRight;
-    }
-
-    public void setFramesMovingUp(Sprite[] framesMovingUp) {
-        this.framesMovingUp = framesMovingUp;
-    }
-
-    public void setFramesIdleDown(Sprite[] framesIdleDown) {
-        this.framesIdleDown = framesIdleDown;
-    }
-
-    public void setFramesIdleLeft(Sprite[] framesIdleLeft) {
-        this.framesIdleLeft = framesIdleLeft;
-    }
-
-    public void setFramesIdleRight(Sprite[] framesIdleRight) {
-        this.framesIdleRight = framesIdleRight;
-    }
-
-    public void setFramesIdleUp(Sprite[] framesIdleUp) {
-        this.framesIdleUp = framesIdleUp;
     }
 
     public void setAnimationMovingDown(Animation animationMovingDown) {

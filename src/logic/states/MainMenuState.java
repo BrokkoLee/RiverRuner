@@ -3,7 +3,6 @@ package logic.states;
 import java.awt.Graphics;
 import java.awt.Color;
 
-import gfx.GamePanel;
 import gfx.Window;
 import gfx.buttons.Button;
 import gfx.buttons.PlayButton;
@@ -15,7 +14,7 @@ public class MainMenuState extends State{
 
     public MainMenuState()
     {
-        playButton=new PlayButton(new Coordinate(100,100),100,50);
+        playButton=new PlayButton(new Coordinate((Window.width/2)-(100/2),(Window.height/2)-(50/2)),100,50);
     }
 
     @Override
@@ -28,10 +27,6 @@ public class MainMenuState extends State{
     public void render(Graphics graphics) {
         graphics.setColor(new Color(0x3C86FF));
         graphics.fillRect(0,0,Window.width,Window.height);
-
-        /*graphics.setColor(new Color(0xF9000D));
-        graphics.setFont(new Font("Courier",Font.BOLD | Font.ITALIC,35));
-        graphics.drawString("Press LEFT MOUSE BUTTON to start",5,Window.height/2);*/
         playButton.render(graphics);
     }
 
