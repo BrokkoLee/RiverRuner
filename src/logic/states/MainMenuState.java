@@ -10,7 +10,7 @@ import logic.Coordinate;
 
 public class MainMenuState extends State{
 
-    Button playButton;
+    private Button playButton;
 
     public MainMenuState()
     {
