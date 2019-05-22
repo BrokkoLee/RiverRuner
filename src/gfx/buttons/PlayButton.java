@@ -4,15 +4,15 @@ import gfx.GamePanel;
 import logic.Coordinate;
 import logic.states.State;
 
-public class PlayButton extends Button {
+public class PlayButton extends SetStateButton {
 
 
     public PlayButton(Coordinate buttonPosition, int width, int height) {
-        super(buttonPosition,width,height,Button.DEFAULT_PRIMARY_BUTTON_COLOR,Button.DEFAULT_SECONDARY_BUTTON_COLOR,"Play Game",Button.DEFAULT_TEXT_COLOR);
+        super(buttonPosition,width,height,"Play Game",State.game);
     }
 
     @Override
-    void actionOnClick() {
+    void set() {
         GamePanel.setState(State.game);
     }
 }

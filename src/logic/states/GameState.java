@@ -1,12 +1,9 @@
 package logic.states;
 
-import gfx.GamePanel;
 import logic.Coordinate;
 import logic.entities.creatures.players.ArcherPlayer;
 import logic.entities.Entity;
-import gfx.Window;
 import java.awt.Graphics;
-import java.awt.Color;
 
 public class GameState extends State {
 
@@ -25,8 +22,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics graphics) {
-        graphics.setColor(new Color(0x5C5C5C));
-        graphics.fillRect(0,0,Window.width,Window.height);
+        setBackground(graphics);
 
         player.render(graphics);
     }

@@ -10,7 +10,7 @@ import java.awt.Font;
 public abstract class Button {
 
     public static final int DEFAULT_WIDTH=100;
-    public static final int DEFAULT_HEIGHT=30;
+    public static final int DEFAULT_HEIGHT=50;
     public static final Color DEFAULT_PRIMARY_BUTTON_COLOR=new Color(0x0000FF);
     public static final Color DEFAULT_SECONDARY_BUTTON_COLOR=new Color(0x0065F9);
     public static final Color DEFAULT_TEXT_COLOR=new Color(0x000000);
@@ -40,17 +40,16 @@ public abstract class Button {
         this.textColor = textColor;
         this.secondaryButtonColor=secondaryButtonColor;
     }
-    public Button(Coordinate buttonPosition)
+    /*public Button(Coordinate buttonPosition)
     {
 
-    }
+    }*/
 
     public void playActionOnClick()
     {
-        if (GamePanel.mouseManager.isClicked && checkIfMouseIsOnButton())
+        if (checkIfMouseIsOnButton() && GamePanel.mouseManager.isClicked)
         {
             actionOnClick();
-            GamePanel.mouseManager.isClicked=false;
         }
     }
     public void update()
@@ -71,10 +70,10 @@ public abstract class Button {
     }
     public boolean checkIfMouseIsOnButton()
     {
-        if(GamePanel.mouseManager.coordinate.x>buttonPosition.getX() &&
-           GamePanel.mouseManager.coordinate.x<buttonPosition.getX()+width &&
-           GamePanel.mouseManager.coordinate.y>buttonPosition.getY() &&
-           GamePanel.mouseManager.coordinate.y<buttonPosition.getY()+height)
+        if(GamePanel.mouseManager.coordinate.x>=buttonPosition.getX() &&
+           GamePanel.mouseManager.coordinate.x<=buttonPosition.getX()+width &&
+           GamePanel.mouseManager.coordinate.y>=buttonPosition.getY() &&
+           GamePanel.mouseManager.coordinate.y<=buttonPosition.getY()+height)
         {
             return true;
         }

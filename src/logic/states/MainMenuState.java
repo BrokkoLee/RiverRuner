@@ -1,23 +1,24 @@
 package logic.states;
 
 import java.awt.Graphics;
-import java.awt.Color;
 
 import gfx.Window;
 import gfx.buttons.Button;
 import gfx.buttons.ExitButton;
 import gfx.buttons.PlayButton;
+import gfx.buttons.SettingsButton;
 import logic.Coordinate;
 
 public class MainMenuState extends State{
 
-    private Button playButton;
-    private Button exitButton;
 
     public MainMenuState()
     {
-        playButton=new PlayButton(new Coordinate((Window.width/2)-(100/2),100),100,50);
-        exitButton=new ExitButton(new Coordinate((Window.width/2)-(100/2),155),100,50);
+        buttons=new Button[]{
+                new PlayButton(new Coordinate((Window.width/2)-(Button.DEFAULT_WIDTH/2),100),Button.DEFAULT_WIDTH,Button.DEFAULT_HEIGHT),
+                new SettingsButton(new Coordinate((Window.width/2)-(Button.DEFAULT_WIDTH/2),100+(Button.DEFAULT_HEIGHT+State.DEFAULT_BUTTON_SPACING)),Button.DEFAULT_WIDTH,Button.DEFAULT_HEIGHT),
+                new ExitButton(new Coordinate((Window.width/2)-(Button.DEFAULT_WIDTH/2),100+(Button.DEFAULT_HEIGHT+State.DEFAULT_BUTTON_SPACING)*2),Button.DEFAULT_WIDTH,Button.DEFAULT_HEIGHT)
+        };
     }
 
     @Override
@@ -27,15 +28,8 @@ public class MainMenuState extends State{
 
     @Override
     public void render(Graphics graphics) {
-        graphics.setColor(new Color(0x3C86FF));
-        graphics.fillRect(0,0,Window.width,Window.height);
-        playButton.render(graphics);
-        exitButton.render(graphics);
-    }
-    public void updateButtons()
-    {
-        playButton.update();
-        exitButton.update();
+        setBackground(graphics);
+        renderButtons(graphics);
     }
 
 }
