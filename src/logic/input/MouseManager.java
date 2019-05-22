@@ -39,7 +39,6 @@ public class MouseManager implements MouseInputListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
     }
 
     @Override
