@@ -34,6 +34,6 @@ public class KeyManager implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        pauseKey=true;
+        pauseKey=keys[KeyEvent.VK_ESCAPE];
     }
 }
