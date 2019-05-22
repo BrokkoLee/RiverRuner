@@ -12,6 +12,7 @@ public class MouseManager implements MouseInputListener {
     public boolean left;
     public boolean right;
     public Point coordinate;
+    public boolean isClicked=false;
 
     public MouseManager()
     {
@@ -39,6 +40,7 @@ public class MouseManager implements MouseInputListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        isClicked=true;
     }
 
     @Override
@@ -55,4 +57,5 @@ public class MouseManager implements MouseInputListener {
     public void mouseDragged(MouseEvent e) {
 
     }
+
 }

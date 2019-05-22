@@ -32,9 +32,10 @@ public abstract class Button {
 
     public void playActionOnClick()
     {
-        if (GamePanel.mouseManager.left && checkIfMouseIsOnButton())
+        if (GamePanel.mouseManager.isClicked && checkIfMouseIsOnButton())
         {
             actionOnClick();
+            GamePanel.mouseManager.isClicked=false;
         }
     }
     public void update()
