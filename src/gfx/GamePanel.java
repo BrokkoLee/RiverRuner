@@ -19,7 +19,7 @@ public class GamePanel extends Canvas implements Runnable
     private boolean running=false;
     private Graphics graphics;
 
-    public static State state=State.mainMenuState;
+    public static State state=State.mainMenu;
 
 
     public static KeyManager keyManager=new KeyManager();

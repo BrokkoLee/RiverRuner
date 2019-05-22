@@ -20,7 +20,7 @@ public class GameState extends State {
     @Override
     public void update() {
         player.update();
-        manageStateSwitching();
+        managePauseKey();
     }
 
     @Override
@@ -31,11 +31,10 @@ public class GameState extends State {
         player.render(graphics);
     }
 
-    @Override
-    public void manageStateSwitching() {
+    public void managePauseKey() {
         if(GamePanel.keyManager.pauseKey)
         {
-            GamePanel.setState(State.mainMenuState);
+            GamePanel.setState(State.pauseMenu);
         }
     }
 }

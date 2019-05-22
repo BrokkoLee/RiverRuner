@@ -15,6 +15,6 @@ public class PlayButton extends Button {
 
     @Override
     void actionOnClick() {
-        GamePanel.setState(State.gameState);
+        GamePanel.setState(State.game);
     }
 }

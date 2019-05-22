@@ -19,7 +19,7 @@ public class MainMenuState extends State{
 
     @Override
     public void update() {
-        manageStateSwitching();
+        playButton.update();
         playButton.playActionOnClick();
     }
 
@@ -30,8 +30,4 @@ public class MainMenuState extends State{
         playButton.render(graphics);
     }
 
-    @Override
-    public void manageStateSwitching() {
-        playButton.update();
-    }
 }
