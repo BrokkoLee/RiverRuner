@@ -4,13 +4,11 @@ import gfx.GamePanel;
 import logic.Coordinate;
 import logic.states.State;
 
-import java.awt.Color;
-
 public class PlayButton extends Button {
 
 
     public PlayButton(Coordinate buttonPosition, int width, int height) {
-        super(buttonPosition,width,height,new Color(0x8F503F),"Play Game",Color.BLACK);
+        super(buttonPosition,width,height,Button.DEFAULT_PRIMARY_BUTTON_COLOR,Button.DEFAULT_SECONDARY_BUTTON_COLOR,"Play Game",Button.DEFAULT_TEXT_COLOR);
     }
 
     @Override

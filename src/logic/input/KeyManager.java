@@ -21,7 +21,6 @@ public class KeyManager implements KeyListener {
         down=keys[KeyEvent.VK_S];
         left=keys[KeyEvent.VK_A];
         right=keys[KeyEvent.VK_D];
-        pauseKey=keys[KeyEvent.VK_ESCAPE];
     }
     @Override
     public void keyPressed(KeyEvent e) {
@@ -35,6 +34,6 @@ public class KeyManager implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        pauseKey=true;
     }
 }

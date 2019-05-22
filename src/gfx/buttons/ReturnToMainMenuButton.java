@@ -4,13 +4,11 @@ import gfx.GamePanel;
 import logic.Coordinate;
 import logic.states.State;
 
-import java.awt.Color;
-
 public class ReturnToMainMenuButton extends Button {
 
     public ReturnToMainMenuButton(Coordinate buttonPosition, int width, int height)
     {
-        super(buttonPosition,width,height,Color.YELLOW,"Return to main menu",Color.BLACK);
+        super(buttonPosition,width,height,Button.DEFAULT_PRIMARY_BUTTON_COLOR,Button.DEFAULT_SECONDARY_BUTTON_COLOR,"Return to main menu",Button.DEFAULT_TEXT_COLOR);
     }
     @Override
     void actionOnClick() {

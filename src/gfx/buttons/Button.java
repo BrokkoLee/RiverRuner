@@ -9,25 +9,40 @@ import java.awt.Font;
 
 public abstract class Button {
 
-    private String text;
-    private Coordinate buttonPosition;
-    private int width;
-    private int height;
-    private Color buttonColor;
-    private Color textColor;
+    public static final int DEFAULT_WIDTH=100;
+    public static final int DEFAULT_HEIGHT=30;
+    public static final Color DEFAULT_PRIMARY_BUTTON_COLOR=new Color(0x0000FF);
+    public static final Color DEFAULT_SECONDARY_BUTTON_COLOR=new Color(0x0065F9);
+    public static final Color DEFAULT_TEXT_COLOR=new Color(0x000000);
+    public static final Font DEFAULT_BUTTON_FONT =new Font("ButtonFont",Font.BOLD|Font.ITALIC,12);
+    public static final String DEFAULT_BUTTON_TEXT="";
+
     FontMetrics fontMetrics;
     private int textWidth;
     private int textDescent;
 
-    public static Font buttonFont=new Font("ButtonFont",Font.BOLD|Font.ITALIC,16);
 
-    public Button(Coordinate buttonPosition, int width, int height, Color buttonColor, String text, Color textColor) {
+    private Coordinate buttonPosition;
+    private int width;
+    private int height;
+    private Color buttonColor;
+    private Color secondaryButtonColor;
+    private String text;
+    private Color textColor;
+
+
+    public Button(Coordinate buttonPosition, int width, int height, Color buttonColor,Color secondaryButtonColor, String text, Color textColor) {
         this.buttonPosition = buttonPosition;
         this.width = width;
         this.height = height;
         this.text = text;
         this.buttonColor = buttonColor;
         this.textColor = textColor;
+        this.secondaryButtonColor=secondaryButtonColor;
+    }
+    public Button(Coordinate buttonPosition)
+    {
+
     }
 
     public void playActionOnClick()
@@ -44,10 +59,11 @@ public abstract class Button {
     }
     public void render(Graphics graphics) {
 
-        graphics.setColor(buttonColor);
+        setButtonColorBasedOnMouseLocation(graphics);
+
         graphics.fillRect(buttonPosition.getX(),buttonPosition.getY(),width,height);
 
-        graphics.setFont(buttonFont);
+        graphics.setFont(DEFAULT_BUTTON_FONT);
         graphics.setColor(textColor);
         setTextSizes(graphics);
         graphics.drawString(text,buttonPosition.getX()+(width/2)-(textWidth/2),buttonPosition.getY()+(height/2)+(textDescent));
@@ -82,6 +98,17 @@ public abstract class Button {
         if (textDescent != getTextDescentOnScreen(graphics))
         {
             textDescent = getTextDescentOnScreen(graphics);
+        }
+    }
+    public void setButtonColorBasedOnMouseLocation(Graphics graphics)
+    {
+        if(checkIfMouseIsOnButton())
+        {
+            graphics.setColor(secondaryButtonColor);
+        }
+        else
+        {
+            graphics.setColor(buttonColor);
         }
     }
     abstract void actionOnClick();

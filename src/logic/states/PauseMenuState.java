@@ -1,12 +1,12 @@
 package logic.states;
 
+import gfx.GamePanel;
 import gfx.Window;
 import gfx.buttons.Button;
 import gfx.buttons.PlayButton;
 import gfx.buttons.ReturnToMainMenuButton;
 import logic.Coordinate;
 
-import java.awt.Color;
 import java.awt.Graphics;
 
 public class PauseMenuState extends State {
@@ -22,12 +22,12 @@ public class PauseMenuState extends State {
     @Override
     public void update() {
         updateButtons();
+        managePauseKey(State.game);
     }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.setColor(new Color(0xFEFF39));
-        graphics.fillRect(0,0,Window.width,Window.height);
+        State.game.render(graphics);
 
         returnToGameButton.render(graphics);
         returnToMainMenuButton.render(graphics);
