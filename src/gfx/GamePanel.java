@@ -14,8 +14,6 @@ import java.awt.image.BufferStrategy;
 public class GamePanel extends Canvas implements Runnable
 {
     private Thread thread;
-    private int width;
-    private int height;
     private boolean running=false;
     private Graphics graphics;
 
@@ -27,8 +25,6 @@ public class GamePanel extends Canvas implements Runnable
 
     public GamePanel(int width, int height)
     {
-        this.width=width;
-        this.height=height;
         setPreferredSize(new Dimension(width,height));
         setFocusable(true);
     }
@@ -94,6 +90,7 @@ public class GamePanel extends Canvas implements Runnable
     public void update()
     {
         state.update();
+        mouseManager.isClicked=false;
     }
 
     public void render()

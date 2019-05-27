@@ -2,6 +2,8 @@ package gfx.buttons;
 
 import gfx.GamePanel;
 import logic.Coordinate;
+import logic.states.State;
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.FontMetrics;
@@ -49,7 +51,9 @@ public abstract class Button {
     {
         if (checkIfMouseIsOnButton() && GamePanel.mouseManager.isClicked)
         {
+            State previousState=GamePanel.state;
             actionOnClick();
+            GamePanel.state.previousState=previousState;
         }
     }
     public void update()

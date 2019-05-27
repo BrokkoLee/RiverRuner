@@ -12,7 +12,7 @@ public class SettingsState extends State{
     public SettingsState()
     {
         buttons=new Button[]{
-                new BackButton(new Coordinate((Window.width/2)-(Button.DEFAULT_WIDTH/2),100),Button.DEFAULT_WIDTH,Button.DEFAULT_HEIGHT,State.mainMenu),
+                new BackButton(new Coordinate((Window.width/2)-(Button.DEFAULT_WIDTH/2),100),Button.DEFAULT_WIDTH,Button.DEFAULT_HEIGHT),
         };
     }
 

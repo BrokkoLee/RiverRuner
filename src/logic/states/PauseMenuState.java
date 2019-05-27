@@ -24,7 +24,6 @@ public class PauseMenuState extends State {
     public void update() {
         updateButtons();
         managePauseKey(State.game);
-        updateButtons();
     }
 
     @Override
