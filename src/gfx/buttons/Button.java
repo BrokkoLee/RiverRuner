@@ -51,9 +51,7 @@ public abstract class Button {
     {
         if (checkIfMouseIsOnButton() && GamePanel.mouseManager.isClicked)
         {
-            State previousState=GamePanel.state;
             actionOnClick();
-            GamePanel.state.previousState=previousState;
         }
     }
     public void update()

@@ -12,7 +12,8 @@ public class ReturnToMainMenuButton extends Button {
 
     @Override
     void actionOnClick() {
-        GamePanel.setState(State.mainMenu);
+        GamePanel.clearStates();
+        GamePanel.addState(State.mainMenu);
 
     }
 }

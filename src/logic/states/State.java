@@ -8,8 +8,6 @@ import gfx.Window;
 import gfx.buttons.Button;
 
 public abstract class State {
-    public State previousState;
-
     public static MainMenuState mainMenu = new MainMenuState();
     public static GameState game = new GameState();
     public static PauseMenuState pauseMenu = new PauseMenuState();
@@ -28,7 +26,7 @@ public abstract class State {
 
     public void managePauseKey(State pauseKeySetState) {
         if (GamePanel.keyManager.pauseKey) {
-            GamePanel.setState(pauseKeySetState);
+            GamePanel.addState(pauseKeySetState);
         }
         GamePanel.keyManager.pauseKey = false;
     }
@@ -50,9 +48,5 @@ public abstract class State {
         {
             buttons[i].render(graphics);
         }
-    }
-    public void setPreviousState(State newState)
-    {
-        this.previousState=newState;
     }
 }

@@ -12,6 +12,6 @@ public class SettingsButton extends Button{
     }
     @Override
     void actionOnClick() {
-        GamePanel.setState(State.settings);
+        GamePanel.addState(State.settings);
     }
 }

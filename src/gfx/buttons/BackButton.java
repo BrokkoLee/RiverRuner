@@ -2,7 +2,6 @@ package gfx.buttons;
 
 import gfx.GamePanel;
 import logic.Coordinate;
-import logic.states.State;
 
 public class BackButton extends Button{
     public BackButton(Coordinate buttonPosition, int width, int height) {
@@ -11,6 +10,6 @@ public class BackButton extends Button{
 
     @Override
     void actionOnClick() {
-        GamePanel.setState(GamePanel.state.previousState);
+        GamePanel.removeState(GamePanel.states.size()-1);
     }
 }

@@ -4,6 +4,7 @@ package gfx;
 import logic.input.KeyManager;
 import logic.input.MouseManager;
 import logic.states.State;
+import java.util.ArrayList;
 
 
 import java.awt.Canvas;
@@ -17,7 +18,7 @@ public class GamePanel extends Canvas implements Runnable
     private boolean running=false;
     private Graphics graphics;
 
-    public static State state=State.mainMenu;
+    public static ArrayList<State> states=new ArrayList<>();
 
 
     public static KeyManager keyManager=new KeyManager();
@@ -80,6 +81,7 @@ public class GamePanel extends Canvas implements Runnable
 
     public void init()
     {
+        states.add(State.mainMenu);
         running=true;
         this.addKeyListener(keyManager);
         this.addMouseListener(mouseManager);
@@ -89,7 +91,7 @@ public class GamePanel extends Canvas implements Runnable
 
     public void update()
     {
-        state.update();
+        states.get(states.size()-1).update();
         mouseManager.isClicked=false;
     }
 
@@ -108,7 +110,7 @@ public class GamePanel extends Canvas implements Runnable
         //draw here
 
 
-        state.render(graphics);
+        states.get(states.size()-1).render(graphics);
 
 
         //end drawing
@@ -122,9 +124,17 @@ public class GamePanel extends Canvas implements Runnable
         keyManager.update();
         mouseManager.update();
     }
-    public static void setState(State newState)
+    public static void addState(State newState)
     {
-        state=newState;
+        states.add(newState);
+    }
+    public static void removeState(int index)
+    {
+        states.remove(index);
+    }
+    public static void clearStates()
+    {
+        states.clear();
     }
 
 

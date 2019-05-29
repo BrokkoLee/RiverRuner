@@ -13,6 +13,6 @@ public class PlayButton extends Button {
 
     @Override
     void actionOnClick() {
-        GamePanel.setState(State.game);
+        GamePanel.addState(State.game);
     }
 }
