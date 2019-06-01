@@ -136,6 +136,10 @@ public class GamePanel extends Canvas implements Runnable
     {
         states.clear();
     }
+    public static void removeLastState()
+    {
+        states.remove(states.size()-1);
+    }
 
 
 }

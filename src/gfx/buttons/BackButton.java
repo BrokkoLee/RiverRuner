@@ -10,6 +10,6 @@ public class BackButton extends Button{
 
     @Override
     void actionOnClick() {
-        GamePanel.removeState(GamePanel.states.size()-1);
+        GamePanel.removeLastState();
     }
 }

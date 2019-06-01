@@ -2,12 +2,8 @@ package gfx.buttons;
 
 import gfx.GamePanel;
 import logic.Coordinate;
-import logic.states.State;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.FontMetrics;
-import java.awt.Font;
+import java.awt.*;
 
 public abstract class Button {
 
@@ -17,7 +13,6 @@ public abstract class Button {
     public static final Color DEFAULT_SECONDARY_BUTTON_COLOR=new Color(0x0065F9);
     public static final Color DEFAULT_TEXT_COLOR=new Color(0x000000);
     public static final Font DEFAULT_BUTTON_FONT =new Font("ButtonFont",Font.BOLD|Font.ITALIC,12);
-    public static final String DEFAULT_BUTTON_TEXT="";
 
     FontMetrics fontMetrics;
     private int textWidth;
@@ -42,10 +37,6 @@ public abstract class Button {
         this.textColor = textColor;
         this.secondaryButtonColor=secondaryButtonColor;
     }
-    /*public Button(Coordinate buttonPosition)
-    {
-
-    }*/
 
     public void playActionOnClick()
     {

@@ -3,15 +3,26 @@ package logic.states;
 import gfx.GamePanel;
 
 import java.awt.Graphics;
+import java.awt.FontMetrics;
+import java.awt.Font;
 import java.awt.Color;
+
 import gfx.Window;
 import gfx.buttons.Button;
+import logic.states.menu.MainMenuState;
+import logic.states.menu.PauseMenuState;
+import logic.states.settings.ControlsSettingsState;
+import logic.states.settings.SettingsState;
 
 public abstract class State {
+    private static final Font stateFont=new Font("StateFont",Font.BOLD,16);
+    protected static FontMetrics fontMetrics;
+
     public static MainMenuState mainMenu = new MainMenuState();
     public static GameState game = new GameState();
     public static PauseMenuState pauseMenu = new PauseMenuState();
     public static SettingsState settings=new SettingsState();
+    public static ControlsSettingsState controls=new ControlsSettingsState();
 
     protected Button[] buttons;
     protected static final int DEFAULT_BUTTON_SPACING=5;
@@ -23,13 +34,6 @@ public abstract class State {
     public abstract void update();
 
     public abstract void render(Graphics graphics);
-
-    public void managePauseKey(State pauseKeySetState) {
-        if (GamePanel.keyManager.pauseKey) {
-            GamePanel.addState(pauseKeySetState);
-        }
-        GamePanel.keyManager.pauseKey = false;
-    }
 
     public void setBackground(Graphics graphics)
     {
@@ -48,5 +52,20 @@ public abstract class State {
         {
             buttons[i].render(graphics);
         }
+    }
+    public void managePauseKey()
+    {
+        if (GamePanel.keyManager.pauseKey) {
+            actionOnPauseKeyPress();
+        }
+        GamePanel.keyManager.pauseKey = false;
+    }
+    public abstract void actionOnPauseKeyPress();
+    public void renderStateTitle(Graphics graphics,String title)
+    {
+        graphics.setColor(Color.BLACK);
+        graphics.setFont(stateFont);
+        fontMetrics=graphics.getFontMetrics();
+        graphics.drawString(title,(Window.width/2)-(fontMetrics.stringWidth(title)/2),95);
     }
 }

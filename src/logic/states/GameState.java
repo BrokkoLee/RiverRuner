@@ -1,5 +1,6 @@
 package logic.states;
 
+import gfx.GamePanel;
 import logic.Coordinate;
 import logic.entities.creatures.players.ArcherPlayer;
 import logic.entities.Entity;
@@ -17,13 +18,17 @@ public class GameState extends State {
     @Override
     public void update() {
         player.update();
-        managePauseKey(State.pauseMenu);
+        managePauseKey();
     }
 
     @Override
     public void render(Graphics graphics) {
         setBackground(graphics);
-
         player.render(graphics);
+    }
+
+    @Override
+    public void actionOnPauseKeyPress() {
+        GamePanel.addState(State.pauseMenu);
     }
 }
