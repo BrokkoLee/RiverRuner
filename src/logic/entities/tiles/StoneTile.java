@@ -6,7 +6,7 @@ public class StoneTile extends Tile{
 
     public StoneTile()
     {
-        super(Sprite.DEFAULT_TEXTURE_SIZE,Sprite.DEFAULT_TEXTURE_SIZE,Sprite.MCStoneSprite);
+        super(Sprite.MCStoneSprite);
     }
     @Override
     public boolean isSolid() {

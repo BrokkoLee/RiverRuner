@@ -22,19 +22,19 @@ public  abstract class Player extends Creature {
     public void move() {
         if (GamePanel.keyManager.up)
         {
-            coordinate.setY(coordinate.getY()-speed);
+            position.setY(position.getY()-speed);
         }
         if(GamePanel.keyManager.down)
         {
-            coordinate.setY(coordinate.getY()+speed);
+            position.setY(position.getY()+speed);
         }
         if(GamePanel.keyManager.left)
         {
-            coordinate.setX(coordinate.getX()-speed);
+            position.setX(position.getX()-speed);
         }
         if(GamePanel.keyManager.right)
         {
-            coordinate.setX(coordinate.getX()+speed);
+            position.setX(position.getX()+speed);
         }
     }
 

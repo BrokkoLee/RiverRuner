@@ -6,7 +6,7 @@ public class GrassTile extends Tile
 {
     public GrassTile()
     {
-        super(Sprite.DEFAULT_TEXTURE_SIZE,Sprite.DEFAULT_TEXTURE_SIZE,Sprite.GrassSprite);
+        super(Sprite.GrassSprite);
     }
 
 

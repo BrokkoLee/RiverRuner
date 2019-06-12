@@ -1,5 +1,6 @@
 package logic.entities;
 
+import gfx.Window;
 import gfx.sprites.Sprite;
 import logic.Coordinate;
 
@@ -8,33 +9,35 @@ import java.awt.image.BufferedImage;
 
 public abstract class Entity {
     private BufferedImage texture=Sprite.defaultSprite.getTexture();
-    protected Coordinate coordinate=new Coordinate(0,0);
+    protected Coordinate position =new Coordinate(0,0);
     private int width=0;
     private int height=0;
     public abstract void update();
-    public Entity(Sprite sprite, Coordinate coordinate)
+    private int xOffset;
+    private int yOffset;
+    public Entity(Sprite sprite, Coordinate position)
     {
         if (sprite!=null)
         {
             setTexture(sprite);
         }
-        setCoordinate(coordinate);
+        setPosition(position);
     }
-    public Entity(Coordinate coordinate)
+    public Entity(Coordinate position)
     {
-        setCoordinate(coordinate);
+        setPosition(position);
     }
 
     public void setTexture(Sprite sprite)
     {
         this.texture=sprite.getTexture();
     }
-    public void setCoordinate(Coordinate coordinate) {
-        this.coordinate = coordinate;
+    public void setPosition(Coordinate position) {
+        this.position = position;
     }
     public void render(Graphics graphics) {
-        if (width > 0 && height > 0)
-            graphics.drawImage(texture, coordinate.getX(), coordinate.getY(), width, height, null);
+        if (isOnScreen())
+            graphics.drawImage(texture, position.getX()+xOffset, position.getY()+yOffset, width, height, null);
     }
 
     public void setWidth(int width) {
@@ -51,5 +54,38 @@ public abstract class Entity {
 
     public int getHeight() {
         return height;
+    }
+
+    public int getxOffset() {
+        return xOffset;
+    }
+
+    public void setxOffset(int xOffset) {
+        this.xOffset = xOffset;
+    }
+
+    public int getyOffset() {
+        return yOffset;
+    }
+
+    public void setyOffset(int yOffset) {
+        this.yOffset = yOffset;
+    }
+
+    public Coordinate getPosition() {
+        return position;
+    }
+    public boolean isOnScreen()
+    {
+        if(getPosition().getX()+xOffset>=-getWidth() && getPosition().getX()+xOffset<Window.width &&
+                getPosition().getY()+yOffset>=-getHeight() && getPosition().getY()+yOffset< Window.height)
+        {
+            return true;
+        }
+        else return false;
+    }
+
+    public BufferedImage getTexture() {
+        return texture;
     }
 }

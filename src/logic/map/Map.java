@@ -1,6 +1,5 @@
 package logic.map;
 
-import logic.Coordinate;
 import logic.entities.tiles.Tile;
 
 import java.awt.Graphics;
@@ -37,7 +36,8 @@ public abstract class Map {
     {
         for (int i = 0; i< tiles.length; i++)
         {
-            tiles[i].setPosition(new Coordinate(tiles[i].getPosition().getX()+xOffset, tiles[i].getPosition().getY()+yOffset));
+            tiles[i].setxOffset(xOffset);
+            tiles[i].setyOffset(yOffset);
         }
     }
     public void setPropsPositions()
@@ -57,7 +57,10 @@ public abstract class Map {
     {
         for (int i = 0; i< tiles.length; i++)
         {
-            tiles[i].render(graphics);
+            if (tiles[i].isOnScreen())
+            {
+                tiles[i].render(graphics);
+            }
         }
     }
 
@@ -65,5 +68,32 @@ public abstract class Map {
     {
         renderTiles(graphics);
         renderProps(graphics);
+    }
+
+    public Tile getTile(int x, int y) {
+        return tiles[y*WIDTH+x];
+    }
+
+    public void setTilesXOffset(int xOffset)
+    {
+        for (int i=0;i<tiles.length;i++)
+        {
+            tiles[i].setxOffset(xOffset);
+        }
+    }
+    public void setTilesYOffset(int yOffset)
+    {
+        for (int i=0;i<tiles.length;i++)
+        {
+            tiles[i].setyOffset(yOffset);
+        }
+    }
+
+    public int getWIDTH() {
+        return WIDTH;
+    }
+
+    public int getHEIGHT() {
+        return HEIGHT;
     }
 }

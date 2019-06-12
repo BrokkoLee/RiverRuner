@@ -5,7 +5,7 @@ import gfx.sprites.Sprite;
 public class NullTile extends Tile{
     public NullTile()
     {
-        super(Sprite.DEFAULT_TEXTURE_SIZE,Sprite.DEFAULT_TEXTURE_SIZE,Sprite.defaultSprite);
+        super(Sprite.defaultSprite);
     }
     @Override
     public boolean isSolid() {

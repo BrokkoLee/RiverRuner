@@ -2,23 +2,19 @@ package logic.entities.tiles;
 
 import gfx.sprites.Sprite;
 import logic.Coordinate;
+import logic.entities.Entity;
 
 import java.awt.Graphics;
 
-public abstract class Tile {
-    private Coordinate position;
-    private int width;
-    private int height;
-    private Sprite texture;
-
+public abstract class Tile extends Entity {
     public static Tile[] tiles;
-
-    public Tile(int width, int height, Sprite texture)
+    public static final int DEFAULT_TILE_WIDTH=64;
+    public static final int DEFAULT_TILE_HEIGHT=64;
+    public Tile(Sprite texture)
     {
-        this.position =new Coordinate(0,0);
-        this.width=width;
-        this.height=height;
-        this.texture=texture;
+        super(texture,new Coordinate(0,0));
+        setWidth(DEFAULT_TILE_WIDTH);
+        setHeight(DEFAULT_TILE_HEIGHT);
     }
     public void update()
     {
@@ -26,7 +22,7 @@ public abstract class Tile {
     }
     public void render(Graphics graphics)
     {
-        graphics.drawImage(texture.getTexture(),position.getX(),position.getY(),this.width,this.height,null);
+        graphics.drawImage(getTexture(),position.getX()+getxOffset(),position.getY()+getyOffset(),getWidth(),getHeight(),null);
     }
     public abstract boolean isSolid();
 
@@ -38,13 +34,6 @@ public abstract class Tile {
         this.position = position;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
     public static void initializeTiles()
     {
         tiles=new Tile[]{
@@ -52,4 +41,6 @@ public abstract class Tile {
                 new StoneTile(),
         };
     }
+
+
 }

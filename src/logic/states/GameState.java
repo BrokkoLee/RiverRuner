@@ -2,6 +2,7 @@ package logic.states;
 
 import gfx.GamePanel;
 import logic.Coordinate;
+import logic.camera.Camera;
 import logic.entities.creatures.players.ArcherPlayer;
 import logic.entities.Entity;
 import logic.map.Map;
@@ -13,16 +14,18 @@ public class GameState extends State {
 
     private Entity player;
     private Map map;
+    private Camera camera;
 
     public GameState()
     {
-        map=new RandomMap(13,10);
-        player=new ArcherPlayer(new Coordinate(50,50));
+        map=new RandomMap(30,30);
+        player=new ArcherPlayer(new Coordinate(100,100));
+        camera=new Camera(player,map);
     }
 
     @Override
     public void update() {
-        player.update();
+        camera.update();
         managePauseKey();
     }
 

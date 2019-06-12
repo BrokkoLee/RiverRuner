@@ -53,36 +53,35 @@ public abstract class Creature extends Entity {
         {
             switch (direction) {
                 case up:
-                    graphics.drawImage(animationMovingUp.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    graphics.drawImage(animationMovingUp.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(), getWidth(), getHeight(), null);
                     break;
                 case down:
-                    graphics.drawImage(animationMovingDown.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    graphics.drawImage(animationMovingDown.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(), getWidth(), getHeight(), null);
                     break;
                 case left:
-                    graphics.drawImage(animationMovingLeft.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    graphics.drawImage(animationMovingLeft.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(), getWidth(), getHeight(), null);
                     break;
                 case right:
-                    graphics.drawImage(animationMovingRight.getCurrentFrame().getTexture(), coordinate.getX(), coordinate.getY(), getWidth(), getHeight(), null);
+                    graphics.drawImage(animationMovingRight.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(), getWidth(), getHeight(), null);
                     break;
             }
         }
         else
         {
-            if (direction==Direction.up)
+            switch (direction)
             {
-                graphics.drawImage(animationIdleUp.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-            }
-            else if (direction==Direction.down)
-            {
-                graphics.drawImage(animationIdleDown.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-            }
-            else if (direction==Direction.left)
-            {
-                graphics.drawImage(animationIdleLeft.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
-            }
-            else if (direction==Direction.right)
-            {
-                graphics.drawImage(animationIdleRight.getCurrentFrame().getTexture(),coordinate.getX(),coordinate.getY(),getWidth(),getHeight(),null);
+                case up:
+                    graphics.drawImage(animationIdleUp.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(),getWidth(),getHeight(),null);
+                    break;
+                case down:
+                    graphics.drawImage(animationIdleDown.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(),getWidth(),getHeight(),null);
+                    break;
+                case left:
+                    graphics.drawImage(animationIdleLeft.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(),getWidth(),getHeight(),null);
+                    break;
+                case right:
+                    graphics.drawImage(animationIdleRight.getCurrentFrame().getTexture(), position.getX()+getxOffset(), position.getY()+getyOffset(),getWidth(),getHeight(),null);
+                    break;
             }
         }
     }
@@ -134,11 +133,11 @@ public abstract class Creature extends Entity {
     public abstract void setAnimations();
 
     public int getX() {
-        return coordinate.getX();
+        return position.getX();
     }
 
     public int getY() {
-        return coordinate.getY();
+        return position.getY();
     }
 
     public void setAnimationMovingDown(Animation animationMovingDown) {
