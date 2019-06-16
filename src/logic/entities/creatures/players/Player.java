@@ -2,6 +2,7 @@ package logic.entities.creatures.players;
 
 import gfx.GamePanel;
 import logic.Coordinate;
+import logic.Hitbox;
 import logic.entities.creatures.Creature;
 
 public  abstract class Player extends Creature {

@@ -3,6 +3,7 @@ package logic.entities.creatures.players;
 import gfx.Animation;
 import gfx.sprites.Sprite;
 import logic.Coordinate;
+import logic.Hitbox;
 
 public class ArcherPlayer extends Player{
 
@@ -56,8 +57,10 @@ public class ArcherPlayer extends Player{
     public ArcherPlayer(Coordinate startCoordinate)
     {
         super(startCoordinate);
-        setWidth(64*2);
-        setHeight(64*2);
+        setSizeMultiplier(2);
+        setWidth(Sprite.DEFAULT_TEXTURE_SIZE*getSizeMultiplier());
+        setHeight(Sprite.DEFAULT_TEXTURE_SIZE*getSizeMultiplier());
+        setHitbox(new Hitbox(new Coordinate(23*getSizeMultiplier(),38*getSizeMultiplier()),18*getSizeMultiplier(),24*getSizeMultiplier()));
         setSpeed(speed);
         setAnimations();
         setAnimationSpeeds();

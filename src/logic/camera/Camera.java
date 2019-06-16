@@ -23,16 +23,7 @@ public class Camera {
     }
     public void update() {
         entity.update();
-        System.out.println(isBindingLeft() +" "+isBindingRight()+" "+isBindingUp()+" "+isBindingDown());
-        System.out.println(entity.getxOffset()+" "+entity.getyOffset()+" "+entity.getPosition().getX()+" "+entity.getPosition().getY());
-
-
         manageBinding();
-        /*alignCenterEntityHorizontally();
-        alignCenterEntityVertically();
-        moveMapVertically();
-        moveMapHorizontally();*/
-
     }
 
     public boolean isBindingLeft()
@@ -132,14 +123,3 @@ public class Camera {
         entity.setyOffset((-entity.getPosition().getY())+(Window.height/2)-(entity.getHeight()/2));
     }
 }
-
-/*if (entity.getxOffset()<=-(map.getWIDTH()*Tile.DEFAULT_TILE_WIDTH-Window.width))
-        {
-            alignCenterEntityHorizontally();
-            moveMapHorizontally();
-        }
-        else if(entity.getPosition().getX()<Tile.DEFAULT_TILE_WIDTH*map.getWIDTH())
-        {
-            entity.setxOffset(0);
-        }
-*/

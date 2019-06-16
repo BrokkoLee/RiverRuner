@@ -1,5 +1,6 @@
 package logic.map;
 
+import logic.entities.Entity;
 import logic.entities.tiles.Tile;
 
 import java.awt.Graphics;
@@ -87,6 +88,18 @@ public abstract class Map {
         {
             tiles[i].setyOffset(yOffset);
         }
+    }
+
+    public boolean isOutOfMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getX()+entity.getHitbox().getxOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getX()>=0 &&
+           entity.getHitbox().getPosition().getX()+entity.getHitbox().getxOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getX()+entity.getHitbox().getWidth()<=Tile.DEFAULT_TILE_WIDTH*WIDTH &&
+           entity.getHitbox().getPosition().getY()+entity.getHitbox().getyOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getY()>=0 &&
+           entity.getHitbox().getPosition().getY()+entity.getHitbox().getyOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getY()+entity.getHitbox().getHeight()<=Tile.DEFAULT_TILE_HEIGHT*HEIGHT)
+        {
+            return false;
+        }
+        return true;
     }
 
     public int getWIDTH() {

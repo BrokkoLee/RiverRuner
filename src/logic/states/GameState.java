@@ -13,18 +13,19 @@ import java.awt.Graphics;
 public class GameState extends State {
 
     private Entity player;
-    private Map map;
+    private static Map map;
     private Camera camera;
 
     public GameState()
     {
-        map=new RandomMap(30,30);
-        player=new ArcherPlayer(new Coordinate(100,100));
+        map=new RandomMap(100,100);
+        player=new ArcherPlayer(new Coordinate(350,250));
         camera=new Camera(player,map);
     }
 
     @Override
     public void update() {
+        System.out.println(map.isOutOfMap(player));
         camera.update();
         managePauseKey();
     }
@@ -39,5 +40,9 @@ public class GameState extends State {
     @Override
     public void actionOnPauseKeyPress() {
         GamePanel.addState(State.pauseMenu);
+    }
+
+    public static Map getMap() {
+        return map;
     }
 }

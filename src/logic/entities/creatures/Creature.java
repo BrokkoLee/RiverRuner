@@ -4,11 +4,13 @@ import gfx.Animation;
 import gfx.GamePanel;
 import logic.Coordinate;
 import logic.Direction;
+import logic.Hitbox;
 import logic.entities.Entity;
 
 import java.awt.Graphics;
 
 public abstract class Creature extends Entity {
+
     private boolean moving=false;
 
     private Animation animationMovingDown;
@@ -20,7 +22,6 @@ public abstract class Creature extends Entity {
     private Animation animationIdleLeft;
     private Animation animationIdleRight;
     private Animation animationIdleUp;
-
 
     private Direction direction;
     public Creature(Coordinate coordinate)
@@ -39,11 +40,13 @@ public abstract class Creature extends Entity {
         updateMoving();
         updateDirection();
         updateAnimation();
+        updateHitbox();
     }
     @Override
     public void render(Graphics graphics)
     {
         playAnimation(graphics);
+        getHitbox().render(graphics);
     }
 
 
