@@ -5,27 +5,32 @@ import logic.Coordinate;
 import logic.camera.Camera;
 import logic.entities.creatures.players.ArcherPlayer;
 import logic.entities.Entity;
+import logic.entities.creatures.players.KnightPlayer;
 import logic.map.Map;
 import logic.map.RandomMap;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class GameState extends State {
 
-    private Entity player;
-    private static Map map;
+    private ArrayList<Entity> entityList=new ArrayList<>();
     private Camera camera;
 
     public GameState()
     {
-        map=new RandomMap(100,100);
-        player=new ArcherPlayer(new Coordinate(350,250));
-        camera=new Camera(player,map);
+        initEntityList();
+        Map.gameMap=new RandomMap(15,17);
+        camera=new Camera(entityList,0,getMap());
     }
-
+    private void initEntityList()
+    {
+        this.entityList.add(new ArcherPlayer(new Coordinate(0,0)));//350,250
+    }
     @Override
     public void update() {
-        System.out.println(map.isOutOfMap(player));
+        getMap().update();
+        updateEntities();
         camera.update();
         managePauseKey();
     }
@@ -33,8 +38,8 @@ public class GameState extends State {
     @Override
     public void render(Graphics graphics) {
         setBackground(graphics);
-        map.render(graphics);
-        player.render(graphics);
+        Map.gameMap.render(graphics);
+        renderEntities(graphics);
     }
 
     @Override
@@ -43,6 +48,22 @@ public class GameState extends State {
     }
 
     public static Map getMap() {
-        return map;
+        return Map.gameMap;
+    }
+    public void renderEntities(Graphics graphics)
+    {
+        for (int i=0;i<entityList.size();i++)
+        {
+            entityList.get(i).render(graphics);
+            //System.out.println(entityList.get(i).getHitbox().getPosition().getX()+" "+entityList.get(i).getPosition().getY());
+        }
+    }
+    public void updateEntities()
+    {
+        for(int i=0;i<entityList.size();i++)
+        {
+            entityList.get(i).update();
+            //System.out.println(entityList.get(i).getHitbox().getPosition().getX());
+        }
     }
 }

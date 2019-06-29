@@ -3,6 +3,7 @@ package logic.entities.creatures.players;
 import gfx.Animation;
 import gfx.sprites.Sprite;
 import logic.Coordinate;
+import logic.Hitbox;
 
 public class KnightPlayer extends Player {
 
@@ -16,12 +17,14 @@ public class KnightPlayer extends Player {
     private Sprite[] framesIdleRight ={Sprite.KnightSprites[8]};
     private Sprite[] framesIdleUp ={Sprite.KnightSprites[11]};
 
-    private int speed=1;
+    private int speed=3;
     public KnightPlayer(Coordinate startCoordinate)
     {
         super(startCoordinate);
-        setWidth(64);
-        setHeight(96);
+        setSizeMultiplier(2);
+        setWidth(Sprite.DEFAULT_TEXTURE_SIZE*getSizeMultiplier());
+        setHeight(Sprite.DEFAULT_TEXTURE_SIZE*getSizeMultiplier());
+        setHitbox(new Hitbox(this,new Coordinate(16*getSizeMultiplier(),30*getSizeMultiplier()),34*getSizeMultiplier(),31*getSizeMultiplier()));
         setSpeed(speed);
         setAnimations();
         setAnimationSpeeds();
@@ -41,14 +44,14 @@ public class KnightPlayer extends Player {
     }
     public void setAnimationSpeeds()
     {
-        setAnimationSpeed(getAnimationIdleDown(),500/framesIdleDown.length);
-        setAnimationSpeed(getAnimationIdleUp(),500/framesIdleUp.length);
-        setAnimationSpeed(getAnimationIdleLeft(),500/framesIdleLeft.length);
-        setAnimationSpeed(getAnimationIdleRight(),500/framesIdleRight.length);
+        setAnimationSpeed(getAnimationIdleDown(),750/framesIdleDown.length);
+        setAnimationSpeed(getAnimationIdleUp(),750/framesIdleUp.length);
+        setAnimationSpeed(getAnimationIdleLeft(),750/framesIdleLeft.length);
+        setAnimationSpeed(getAnimationIdleRight(),750/framesIdleRight.length);
 
-        setAnimationSpeed(getAnimationMovingDown(),500/framesMovingDown.length);
-        setAnimationSpeed(getAnimationMovingUp(),500/framesMovingUp.length);
-        setAnimationSpeed(getAnimationMovingLeft(),500/framesMovingLeft.length);
-        setAnimationSpeed(getAnimationMovingRight(),500/framesMovingRight.length);
+        setAnimationSpeed(getAnimationMovingDown(),750/framesMovingDown.length);
+        setAnimationSpeed(getAnimationMovingUp(),750/framesMovingUp.length);
+        setAnimationSpeed(getAnimationMovingLeft(),750/framesMovingLeft.length);
+        setAnimationSpeed(getAnimationMovingRight(),750/framesMovingRight.length);
     }
 }

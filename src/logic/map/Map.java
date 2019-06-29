@@ -7,9 +7,14 @@ import java.awt.Graphics;
 
 
 public abstract class Map {
+    public static Map gameMap;
+
     protected final int WIDTH;
     protected final int HEIGHT;
     protected Tile tiles[];
+    protected int xOffset=0;
+    protected int yOffset=0;
+
     public Map(int width, int height)
     {
         this.WIDTH=width;
@@ -33,12 +38,12 @@ public abstract class Map {
     public abstract void loadTiles();
     public abstract void loadProps();
 
-    public void setTilePositions(int xOffset,int yOffset)
+    public void setTilesOffset ()
     {
         for (int i = 0; i< tiles.length; i++)
         {
-            tiles[i].setxOffset(xOffset);
-            tiles[i].setyOffset(yOffset);
+            tiles[i].setxOffset(this.xOffset);
+            tiles[i].setyOffset(this.yOffset);
         }
     }
     public void setPropsPositions()
@@ -52,7 +57,7 @@ public abstract class Map {
 
     public void update()
     {
-
+        setTilesOffset();
     }
     public void renderTiles(Graphics graphics)
     {
@@ -89,17 +94,29 @@ public abstract class Map {
             tiles[i].setyOffset(yOffset);
         }
     }
-
-    public boolean isOutOfMap(Entity entity)
+    public boolean isBindingToLeftSideOfTheMap(Entity entity)
     {
-        if(entity.getHitbox().getPosition().getX()+entity.getHitbox().getxOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getX()>=0 &&
-           entity.getHitbox().getPosition().getX()+entity.getHitbox().getxOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getX()+entity.getHitbox().getWidth()<=Tile.DEFAULT_TILE_WIDTH*WIDTH &&
-           entity.getHitbox().getPosition().getY()+entity.getHitbox().getyOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getY()>=0 &&
-           entity.getHitbox().getPosition().getY()+entity.getHitbox().getyOffset()+entity.getHitbox().getOffsetRelativeToEntityPosition().getY()+entity.getHitbox().getHeight()<=Tile.DEFAULT_TILE_HEIGHT*HEIGHT)
-        {
-            return false;
-        }
-        return true;
+        if(entity.getHitbox().getPosition().getX()<=0)
+            return true;
+        return false;
+    }
+    public boolean isBindingToRightSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getX()+entity.getHitbox().getWidth()>=Tile.DEFAULT_TILE_WIDTH*WIDTH)
+            return true;
+        return false;
+    }
+    public boolean isBindingToTopSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getY()<=0)
+            return true;
+        return false;
+    }
+    public boolean isBindingToBottomSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getY()+entity.getHitbox().getHeight()>=Tile.DEFAULT_TILE_HEIGHT*HEIGHT)
+            return true;
+        return false;
     }
 
     public int getWIDTH() {
@@ -108,5 +125,26 @@ public abstract class Map {
 
     public int getHEIGHT() {
         return HEIGHT;
+    }
+
+    public int getxOffset() {
+        return xOffset;
+    }
+
+    public void setxOffset(int xOffset) {
+        this.xOffset = xOffset;
+    }
+
+    public int getyOffset() {
+        return yOffset;
+    }
+
+    public void setyOffset(int yOffset) {
+        this.yOffset = yOffset;
+    }
+    public void setMapOffset(int xOffset, int yOffset)
+    {
+        this.xOffset=xOffset;
+        this.yOffset=yOffset;
     }
 }

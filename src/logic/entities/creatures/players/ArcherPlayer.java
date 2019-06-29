@@ -60,7 +60,7 @@ public class ArcherPlayer extends Player{
         setSizeMultiplier(2);
         setWidth(Sprite.DEFAULT_TEXTURE_SIZE*getSizeMultiplier());
         setHeight(Sprite.DEFAULT_TEXTURE_SIZE*getSizeMultiplier());
-        setHitbox(new Hitbox(new Coordinate(23*getSizeMultiplier(),38*getSizeMultiplier()),18*getSizeMultiplier(),24*getSizeMultiplier()));
+        setHitbox(new Hitbox(this,new Coordinate(23*getSizeMultiplier(),38*getSizeMultiplier()),18*getSizeMultiplier(),24*getSizeMultiplier()));
         setSpeed(speed);
         setAnimations();
         setAnimationSpeeds();

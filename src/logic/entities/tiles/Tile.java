@@ -2,7 +2,6 @@ package logic.entities.tiles;
 
 import gfx.sprites.Sprite;
 import logic.Coordinate;
-import logic.Hitbox;
 import logic.entities.Entity;
 
 public abstract class Tile extends Entity {
@@ -12,7 +11,6 @@ public abstract class Tile extends Entity {
     public Tile(Sprite texture)
     {
         super(texture,new Coordinate(0,0));
-        setHitbox(Hitbox.nullHitbox);
         setWidth(DEFAULT_TILE_WIDTH);
         setHeight(DEFAULT_TILE_HEIGHT);
     }

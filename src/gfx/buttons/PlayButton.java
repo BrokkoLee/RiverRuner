@@ -2,6 +2,7 @@ package gfx.buttons;
 
 import gfx.GamePanel;
 import logic.Coordinate;
+import logic.states.GameState;
 import logic.states.State;
 
 public class PlayButton extends Button {
@@ -13,6 +14,7 @@ public class PlayButton extends Button {
 
     @Override
     void actionOnClick() {
+        State.game=new GameState();
         GamePanel.addState(State.game);
     }
 }

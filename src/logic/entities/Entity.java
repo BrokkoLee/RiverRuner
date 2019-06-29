@@ -112,4 +112,9 @@ public abstract class Entity {
     public void setHitbox(Hitbox hitbox) {
         this.hitbox = hitbox;
     }
+    public void setOffset(int xOffset, int yOffset)
+    {
+        this.xOffset=xOffset;
+        this.yOffset=yOffset;
+    }
 }

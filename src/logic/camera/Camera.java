@@ -5,30 +5,64 @@ import logic.entities.tiles.Tile;
 import logic.map.Map;
 import logic.entities.Entity;
 
+import java.util.ArrayList;
+
 public class Camera {
     private Map map;
-    private Entity entity;
-    public Camera(Entity entity, Map map)
+    private Entity centerEntity;
+    private ArrayList<Entity> entityList;
+    private int xOffset=0;
+    private int yOffset=0;
+    public Camera(ArrayList<Entity> entityList,int entityIndex, Map map)
     {
         this.map=map;
+        this.entityList=entityList;
+        setCenterEntity(entityList.get(entityIndex));
+    }
+
+    public Camera(ArrayList<Entity> entityList,Entity entity, Map map)
+    {
+        this.map=map;
+        this.entityList=entityList;
         setCenterEntity(entity);
     }
     public void setCenterEntity(Entity entity)
     {
-        this.entity=entity;
+        this.centerEntity=entity;
     }
-    public void alignMapToCenterEntity()
+    public void setCenterEntity(int entityIndex)
     {
-        map.setTilePositions(entity.getxOffset(),entity.getyOffset());
+        this.centerEntity=entityList.get(entityIndex);
     }
     public void update() {
-        entity.update();
-        manageBinding();
+        manageOffsets();
+        map.setMapOffset(xOffset,yOffset);
+        for (int i=0;i<entityList.size();i++)
+        {
+            entityList.get(i).setOffset(xOffset,yOffset);
+        }
+    }
+
+    public void manageOffsets()
+    {
+        if(!isBindingLeft() && !isBindingRight())
+            xOffset=-(centerEntity.getHitbox().getPosition().getX()+centerEntity.getHitbox().getWidth()/2-Window.width/2);
+        if(isBindingLeft())
+            xOffset=0;
+        if (isBindingRight())
+            xOffset=-(map.getWIDTH()*Tile.DEFAULT_TILE_WIDTH-Window.width);
+        if (!isBindingUp() && !isBindingDown())
+            yOffset=-(centerEntity.getHitbox().getPosition().getY()+centerEntity.getHitbox().getHeight()/2-Window.height/2);
+        if (isBindingUp())
+            yOffset=0;
+        if (isBindingDown())
+            yOffset=-(map.getHEIGHT()*Tile.DEFAULT_TILE_HEIGHT-Window.height);
+
     }
 
     public boolean isBindingLeft()
     {
-        if (entity.getxOffset()>0)
+        if (centerEntity.getHitbox().getPosition().getX()+centerEntity.getHitbox().getWidth()/2<Window.width/2)
         {
             return true;
         }
@@ -36,90 +70,20 @@ public class Camera {
     }
     public boolean isBindingRight()
     {
-        if(entity.getxOffset()<-(Tile.DEFAULT_TILE_WIDTH*map.getWIDTH()-Window.width))
-        {
+        if(centerEntity.getHitbox().getPosition().getX()+centerEntity.getHitbox().getWidth()/2>map.getWIDTH()*Tile.DEFAULT_TILE_WIDTH-Window.width/2)
             return true;
-        }
         return false;
     }
     public boolean isBindingUp()
     {
-        if (entity.getyOffset()>0)
-        {
+        if(centerEntity.getHitbox().getPosition().getY()+centerEntity.getHitbox().getHeight()/2<Window.height/2)
             return true;
-        }
         return false;
     }
     public boolean isBindingDown()
     {
-        if (entity.getyOffset()<-(Tile.DEFAULT_TILE_HEIGHT*map.getHEIGHT()-Window.height))
-        {
+        if (centerEntity.getHitbox().getPosition().getY()+centerEntity.getHitbox().getHeight()/2>map.getHEIGHT()*Tile.DEFAULT_TILE_HEIGHT-Window.height/2)
             return true;
-        }
         return false;
-    }
-
-    public void manageBinding()
-    {
-        manageHorizontalBinding();
-        manageVerticalBinding();
-    }
-
-
-    public void manageHorizontalBinding()
-    {
-        if(!isBindingLeft() && !isBindingRight())
-        {
-            alignCenterEntityHorizontally();
-            moveMapHorizontally();
-        }
-        else
-        {
-            if(isBindingLeft() && entity.getPosition().getX()>(Window.width/2)-(entity.getWidth()/2))
-            {
-                entity.setxOffset(0);
-            }
-            if (isBindingRight() && entity.getPosition().getX()<(map.getWIDTH()*Tile.DEFAULT_TILE_WIDTH-(entity.getWidth()/2))-(Window.width/2))
-            {
-                entity.setxOffset(-((map.getWIDTH()*Tile.DEFAULT_TILE_WIDTH)-Window.width));
-            }
-        }
-    }
-
-    public void manageVerticalBinding()
-    {
-        if(!isBindingUp() && !isBindingDown())
-        {
-            alignCenterEntityVertically();
-            moveMapVertically();
-        }
-        else
-        {
-            if(isBindingUp() && entity.getPosition().getY()>(Window.height/2)-(entity.getHeight()/2))
-            {
-                entity.setyOffset(0);
-            }
-            if (isBindingDown() && entity.getPosition().getY()<(map.getHEIGHT()*Tile.DEFAULT_TILE_HEIGHT-(entity.getHeight()/2))-(Window.height/2))
-            {
-                entity.setyOffset(-((map.getHEIGHT()*Tile.DEFAULT_TILE_HEIGHT)-Window.height));
-            }
-        }
-    }
-
-    public void moveMapHorizontally()
-    {
-        map.setTilesXOffset(entity.getxOffset());
-    }
-    public void moveMapVertically()
-    {
-        map.setTilesYOffset(entity.getyOffset());
-    }
-    public void alignCenterEntityHorizontally()
-    {
-        entity.setxOffset((-entity.getPosition().getX())+(Window.width/2)-(entity.getWidth()/2));
-    }
-    public void alignCenterEntityVertically()
-    {
-        entity.setyOffset((-entity.getPosition().getY())+(Window.height/2)-(entity.getHeight()/2));
     }
 }
