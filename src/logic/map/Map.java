@@ -59,6 +59,7 @@ public abstract class Map {
     {
         setTilesOffset();
     }
+
     public void renderTiles(Graphics graphics)
     {
         for (int i = 0; i< tiles.length; i++)
@@ -115,6 +116,44 @@ public abstract class Map {
     public boolean isBindingToBottomSideOfTheMap(Entity entity)
     {
         if(entity.getHitbox().getPosition().getY()+entity.getHitbox().getHeight()>=Tile.DEFAULT_TILE_HEIGHT*HEIGHT)
+            return true;
+        return false;
+    }
+
+    public void preventGettingOutOfTheMap(Entity entity)
+    {
+        if (isOutOfLeftSideOfTheMap(entity))
+            entity.getPosition().setX(-entity.getHitbox().getOffsetRelativeToEntityPosition().getX());
+        if (isOutOfRightSideOfTheMap(entity))
+            entity.getPosition().setX(Map.gameMap.getWIDTH()*Tile.DEFAULT_TILE_WIDTH-entity.getHitbox().getOffsetRelativeToEntityPosition().getX()-entity.getHitbox().getWidth());
+        if (isOutOfTopSideOfTheMap(entity))
+            entity.getPosition().setY(-entity.getHitbox().getOffsetRelativeToEntityPosition().getY());
+        if (isOutOfBottomSideOfTheMap(entity))
+            entity.getPosition().setY(Map.gameMap.getHEIGHT()*Tile.DEFAULT_TILE_HEIGHT-entity.getHitbox().getOffsetRelativeToEntityPosition().getY()-entity.getHitbox().getHeight());
+    }
+    
+    
+    public boolean isOutOfLeftSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getX()<0)
+            return true;
+        return false;
+    }
+    public boolean isOutOfRightSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getX()+entity.getHitbox().getWidth()>Tile.DEFAULT_TILE_WIDTH*WIDTH)
+            return true;
+        return false;   
+    }
+    public boolean isOutOfTopSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getY()<0)
+            return true;
+        return false;
+    }
+    public boolean isOutOfBottomSideOfTheMap(Entity entity)
+    {
+        if(entity.getHitbox().getPosition().getY()+entity.getHitbox().getHeight()>Tile.DEFAULT_TILE_HEIGHT*HEIGHT)
             return true;
         return false;
     }

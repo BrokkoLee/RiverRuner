@@ -3,6 +3,7 @@ package logic.entities.creatures.players;
 import gfx.GamePanel;
 import logic.Coordinate;
 import logic.entities.creatures.Creature;
+import logic.entities.tiles.Tile;
 import logic.map.Map;
 
 public  abstract class Player extends Creature {
@@ -22,21 +23,13 @@ public  abstract class Player extends Creature {
     @Override
     public void move() {
         if (GamePanel.keyManager.up && !Map.gameMap.isBindingToTopSideOfTheMap(this))
-        {
             position.setY(position.getY()-speed);
-        }
         if(GamePanel.keyManager.down && !Map.gameMap.isBindingToBottomSideOfTheMap(this))
-        {
             position.setY(position.getY()+speed);
-        }
         if(GamePanel.keyManager.left && !Map.gameMap.isBindingToLeftSideOfTheMap(this))
-        {
             position.setX(position.getX()-speed);
-        }
         if(GamePanel.keyManager.right && !Map.gameMap.isBindingToRightSideOfTheMap(this))
-        {
             position.setX(position.getX()+speed);
-        }
     }
 
     @Override

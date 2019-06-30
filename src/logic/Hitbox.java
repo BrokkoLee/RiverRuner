@@ -57,6 +57,7 @@ public class Hitbox {
 
     public void setPosition(Coordinate position) {
         this.position = position;
+        entity.setPosition(new Coordinate(position.getX()-offsetRelativeToEntity.getX(),position.getY()-offsetRelativeToEntity.getY()));
     }
 
     public int getWidth() {

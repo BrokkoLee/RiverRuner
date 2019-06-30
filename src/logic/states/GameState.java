@@ -5,7 +5,6 @@ import logic.Coordinate;
 import logic.camera.Camera;
 import logic.entities.creatures.players.ArcherPlayer;
 import logic.entities.Entity;
-import logic.entities.creatures.players.KnightPlayer;
 import logic.map.Map;
 import logic.map.RandomMap;
 
@@ -63,6 +62,7 @@ public class GameState extends State {
         for(int i=0;i<entityList.size();i++)
         {
             entityList.get(i).update();
+            getMap().preventGettingOutOfTheMap(entityList.get(i));
             //System.out.println(entityList.get(i).getHitbox().getPosition().getX());
         }
     }
