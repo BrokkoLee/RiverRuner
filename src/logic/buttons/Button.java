@@ -1,4 +1,4 @@
-package gfx.buttons;
+package logic.buttons;
 
 import gfx.GamePanel;
 import logic.Coordinate;
@@ -36,6 +36,16 @@ public abstract class Button {
         this.buttonColor = buttonColor;
         this.textColor = textColor;
         this.secondaryButtonColor=secondaryButtonColor;
+    }
+    public Button(Coordinate buttonPosition, int width, int height,String text)
+    {
+        this.buttonPosition = buttonPosition;
+        this.width = width;
+        this.height = height;
+        this.text=text;
+        this.buttonColor=DEFAULT_PRIMARY_BUTTON_COLOR;
+        this.secondaryButtonColor=DEFAULT_SECONDARY_BUTTON_COLOR;
+        this.textColor=DEFAULT_TEXT_COLOR;
     }
 
     public void playActionOnClick()
@@ -103,6 +113,6 @@ public abstract class Button {
             graphics.setColor(buttonColor);
         }
     }
-    abstract void actionOnClick();
+    public abstract void actionOnClick();
 
 }

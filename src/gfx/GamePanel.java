@@ -4,6 +4,8 @@ package gfx;
 import logic.input.KeyManager;
 import logic.input.MouseManager;
 import logic.states.State;
+
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
 
@@ -15,7 +17,7 @@ import java.awt.image.BufferStrategy;
 public class GamePanel extends Canvas implements Runnable
 {
     private Thread thread;
-    private boolean running=false;
+    private static boolean running=false;
     private Graphics graphics;
 
     public static ArrayList<State> states=new ArrayList<>();
@@ -77,6 +79,7 @@ public class GamePanel extends Canvas implements Runnable
                 timer += 1000;
             }
         }
+
     }
 
     public void init()
@@ -128,10 +131,6 @@ public class GamePanel extends Canvas implements Runnable
     {
         states.add(newState);
     }
-    public static void removeState(int index)
-    {
-        states.remove(index);
-    }
     public static void clearStates()
     {
         states.clear();
@@ -141,5 +140,7 @@ public class GamePanel extends Canvas implements Runnable
         states.remove(states.size()-1);
     }
 
-
+    public static void setRunning(boolean running) {
+        GamePanel.running = running;
+    }
 }
